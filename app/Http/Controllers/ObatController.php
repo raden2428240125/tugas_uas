@@ -12,7 +12,8 @@ class ObatController extends Controller
      */
     public function index()
     {
-        //
+        $obats = Obat::all();
+        return view('obat.index', compact('obats'));
     }
 
     /**
@@ -20,7 +21,7 @@ class ObatController extends Controller
      */
     public function create()
     {
-        //
+        return view('obat.create');
     }
 
     /**
@@ -28,7 +29,17 @@ class ObatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Obat::create([
+            'idobat' => $request->idobat,
+            'namaobat' => $request->namaobat,
+            'jenisobat' => $request->jenisobat,
+            'tanggal_kadaluarsa' => $request->tanggal_kadaluarsa,
+            'harga' => $request->harga,
+            'satuan' => $request->satuan,
+            'stok' => $request->stok
+        ]);
+
+        return redirect('/obat');
     }
 
     /**
@@ -44,7 +55,8 @@ class ObatController extends Controller
      */
     public function edit(Obat $obat)
     {
-        //
+        $obat = Obat::find($obat->idobat);
+        return view('obat.edit', compact('obat'));
     }
 
     /**
@@ -52,7 +64,18 @@ class ObatController extends Controller
      */
     public function update(Request $request, Obat $obat)
     {
-        //
+        $obat = Obat::findOrFail($obat->idobat);
+
+        $obat->update([
+            'namaobat' => $request->namaobat,
+            'jenisobat' => $request->jenisobat,
+            'tanggal_kadaluarsa' => $request->tanggal_kadaluarsa,
+            'harga' => $request->harga,
+            'satuan' => $request->satuan,
+            'stok' => $request->stok,
+        ]);
+
+        return redirect('/obat');
     }
 
     /**
@@ -60,6 +83,8 @@ class ObatController extends Controller
      */
     public function destroy(Obat $obat)
     {
-        //
+        $obat = Obat::findOrFail($obat->idobat);
+        $obat->delete();
+        return redirect('/obat');
     }
 }
