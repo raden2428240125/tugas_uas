@@ -1,26 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
+    <div class="card border-0 shadow-sm mb-4" style="background: linear-gradient(135deg,#ffd6e0,#ffeef2);">
 
-        <div class="col-md-12 mb-4">
+        <div class="card-body p-5">
 
-            <div class="card border-0 shadow-sm" style="background-color:#ffdce5;">
+            <h1 class="fw-bold">
+                💊 Dashboard Administrasi Apotek Digital
+            </h1>
 
-                <div class="card-body p-5">
-
-                    <h1 class="fw-bold text-dark">
-                        🌸 Selamat Datang di Apotek Digital
-                    </h1>
-
-                    <p class="mt-3">
-                        Sistem Informasi Layanan Apotek Digital
-                        Terintegrasi berbasis Laravel dan Bootstrap.
-                    </p>
-
-                </div>
-
-            </div>
+            <p class="text-secondary mb-0">
+                Sistem informasi untuk membantu pengelolaan obat,
+                pemantauan stok, pengelolaan pelanggan, serta
+                transaksi pemesanan secara terintegrasi.
+            </p>
 
         </div>
 
@@ -28,7 +21,7 @@
 
     <div class="row">
 
-        <div class="col-md-4 mb-4">
+        <div class="col-md-3 mb-4">
 
             <div class="card shadow-sm border-0">
 
@@ -48,18 +41,18 @@
 
         </div>
 
-        <div class="col-md-4 mb-4">
+        <div class="col-md-3 mb-4">
 
             <div class="card shadow-sm border-0">
 
                 <div class="card-body text-center">
 
-                    <h3>🧑‍⚕️</h3>
+                    <h3>🧑</h3>
 
-                    <h5>Total Dokter</h5>
+                    <h5>Total Pelanggan</h5>
 
                     <h2 class="fw-bold text-danger">
-                        {{ $totalDokter }}
+                        {{ $totalPelanggan }}
                     </h2>
 
                 </div>
@@ -68,49 +61,38 @@
 
         </div>
 
-        <div class="col-md-4 mb-4">
+
+        <div class="col-md-3 mb-4">
 
             <div class="card shadow-sm border-0">
 
                 <div class="card-body text-center">
 
-                    <h3>🧑</h3>
+                    <h3>💳</h3>
 
-                    <h5>Total Pasien</h5>
+                    <h5>Total Pesanan</h5>
 
                     <h2 class="fw-bold text-danger">
-                        {{ $totalPasien }}
+                        {{ $totalPesanan }}
                     </h2>
 
                 </div>
 
             </div>
 
-            <div class="col-md-4 mb-4">
+        </div>
 
-                <div class="card shadow-sm border-0">
+    </div>
 
-                    <div class="card-body text-center">
+    <div class="row">
 
-                        <h3>💳</h3>
+        <div class="col-md-6 mb-4">
 
-                        <h5>Total Transaksi</h5>
-
-                        <h2 class="fw-bold text-danger">
-                            {{ $totalTransaksi }}
-                        </h2>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="card shadow-sm border-0 mt-4">
+            <div class="card shadow-sm border-0">
 
                 <div class="card-header bg-danger text-white">
 
-                    Obat Dengan Stok Menipis
+                    Stok Obat Menipis
 
                 </div>
 
@@ -134,9 +116,57 @@
                             @foreach ($stokMenipis as $obat)
                                 <tr>
 
-                                    <td>{{ $obat->namaobat }}</td>
-
+                                    <td>{{ $obat->nama_obat }}</td>
                                     <td>{{ $obat->stok }}</td>
+
+                                </tr>
+                            @endforeach
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6 mb-4">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-header bg-warning">
+
+                    Obat Mendekati Kadaluarsa
+
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-bordered">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Nama Obat</th>
+                                <th>Kadaluarsa</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            @foreach ($obatKadaluarsa as $obat)
+                                <tr>
+
+                                    <td>{{ $obat->nama_obat }}</td>
+
+                                    <td>
+                                        {{ $obat->tanggal_kadaluarsa }}
+                                    </td>
 
                                 </tr>
                             @endforeach

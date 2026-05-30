@@ -9,18 +9,23 @@ class Obat extends Model
 {
     use HasFactory;
 
-    protected $table = 'obat';
-    protected $primaryKey = 'idobat';
-    public $incrementing = false;
-    protected $keyType = 'string';
     protected $fillable = [
-        'idobat',
-        'namaobat',
-        'jenisobat',
-        'tanggal_kadaluarsa',
+        'nama_obat',
+        'jenis_obat',
         'harga',
-        'satuan',
-        'stok'
+        'stok',
+        'tanggal_kadaluarsa',
+        'deskripsi',
+        'kategori_id'
     ];
-    public $timestamps = false;
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
+
+    public function detailPesanans()
+    {
+        return $this->hasMany(DetailPesanan::class);
+    }
 }
