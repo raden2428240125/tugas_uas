@@ -6,7 +6,7 @@
         <div class="card-body p-5">
 
             <h1 class="fw-bold">
-                💊 Dashboard Administrasi Apotek Digital
+                Dashboard Administrasi Apotek Digital
             </h1>
 
             <p class="text-secondary mb-0">
@@ -61,6 +61,26 @@
 
         </div>
 
+        <div class="col-md-3 mb-4">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body text-center">
+
+                    <h3>📄</h3>
+
+                    <h5>Total Resep</h5>
+
+                    <h2 class="fw-bold text-danger">
+                        {{ $totalResep }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
 
         <div class="col-md-3 mb-4">
 
@@ -77,6 +97,26 @@
                     </h2>
 
                 </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3 mb-4">
+
+        <div class="card shadow-sm border-0">
+
+            <div class="card-body text-center">
+
+                <h3>💳</h3>
+
+                <h5>Total Pembayaran</h5>
+
+                <h2 class="fw-bold text-danger">
+                    {{ $totalPembayaran }}
+                </h2>
 
             </div>
 

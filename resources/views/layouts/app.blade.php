@@ -47,6 +47,30 @@
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/pelanggan">
+                            Pelanggan
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/resep">
+                            Resep
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/pesanan">
+                            Pesanan
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/pembayaran">
+                            Pembayaran
+                        </a>
+                    </li>
+
                 </ul>
 
             </div>

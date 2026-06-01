@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Obat;
 use App\Models\Pelanggan;
 use App\Models\Pesanan;
+use App\Models\Resep;
+use App\Models\Pembayaran;
 
 class DashboardController extends Controller
 {
@@ -15,6 +17,10 @@ class DashboardController extends Controller
         $totalPelanggan = Pelanggan::count();
 
         $totalPesanan = Pesanan::count();
+
+        $totalResep = Resep::count();
+
+        $totalPembayaran = Pembayaran::count();
 
         $stokMenipis = Obat::where('stok', '<', 10)->get();
 
@@ -28,7 +34,9 @@ class DashboardController extends Controller
             compact(
                 'totalObat',
                 'totalPelanggan',
+                'totalResep',
                 'totalPesanan',
+                'totalPembayaran',
                 'stokMenipis',
                 'obatKadaluarsa'
             )

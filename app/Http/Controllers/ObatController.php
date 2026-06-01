@@ -30,13 +30,13 @@ class ObatController extends Controller
     public function store(Request $request)
     {
         Obat::create([
-            'idobat' => $request->idobat,
-            'namaobat' => $request->namaobat,
-            'jenisobat' => $request->jenisobat,
-            'tanggal_kadaluarsa' => $request->tanggal_kadaluarsa,
+            'nama_obat' => $request->nama_obat,
+            'jenis_obat' => $request->jenis_obat,
             'harga' => $request->harga,
-            'satuan' => $request->satuan,
-            'stok' => $request->stok
+            'stok' => $request->stok,
+            'tanggal_kadaluarsa' => $request->tanggal_kadaluarsa,
+            'deskripsi' => $request->deskripsi,
+            'kategori_id' => $request->kategori_id
         ]);
 
         return redirect('/obat');
@@ -55,7 +55,6 @@ class ObatController extends Controller
      */
     public function edit(Obat $obat)
     {
-        $obat = Obat::find($obat->idobat);
         return view('obat.edit', compact('obat'));
     }
 
@@ -64,15 +63,14 @@ class ObatController extends Controller
      */
     public function update(Request $request, Obat $obat)
     {
-        $obat = Obat::findOrFail($obat->idobat);
-
         $obat->update([
-            'namaobat' => $request->namaobat,
-            'jenisobat' => $request->jenisobat,
-            'tanggal_kadaluarsa' => $request->tanggal_kadaluarsa,
+            'nama_obat' => $request->nama_obat,
+            'jenis_obat' => $request->jenis_obat,
             'harga' => $request->harga,
-            'satuan' => $request->satuan,
             'stok' => $request->stok,
+            'tanggal_kadaluarsa' => $request->tanggal_kadaluarsa,
+            'deskripsi' => $request->deskripsi,
+            'kategori_id' => $request->kategori_id
         ]);
 
         return redirect('/obat');
@@ -83,8 +81,8 @@ class ObatController extends Controller
      */
     public function destroy(Obat $obat)
     {
-        $obat = Obat::findOrFail($obat->idobat);
         $obat->delete();
+
         return redirect('/obat');
     }
 }

@@ -23,12 +23,12 @@
 
             <div class="mb-3">
                 <label>Nama Obat</label>
-                <input type="text" name="namaobat" class="form-control">
+                <input type="text" name="nama_obat" class="form-control">
             </div>
 
             <div class="mb-3">
                 <label>Jenis Obat</label>
-                <input type="text" name="jenisobat" class="form-control">
+                <input type="text" name="jenis_obat" class="form-control">
             </div>
 
             <div class="mb-3">

@@ -10,7 +10,7 @@ class Pesanan extends Model
         'pelanggan_id',
         'resep_id',
         'tanggal_pesanan',
-        'status_pesanan',
+        'status',
         'total_harga'
     ];
 
