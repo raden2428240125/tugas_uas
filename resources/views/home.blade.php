@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
     <div class="p-5 mb-5 rounded shadow-sm" style="background-color:#ffdce5;">
@@ -79,6 +79,46 @@
                     <p>
                         Proses pembelian obat lebih cepat dan praktis.
                     </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row mt-5">
+
+            <div class="col-md-3">
+
+                <div class="card border-0 shadow-sm text-center">
+
+                    <div class="card-body">
+
+                        <h2>💊</h2>
+
+                        <h3>{{ $totalObat }}</h3>
+
+                        <p>Total Obat</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="card border-0 shadow-sm text-center">
+
+                    <div class="card-body">
+
+                        <h2>📂</h2>
+
+                        <h3>{{ $totalKategori }}</h3>
+
+                        <p>Kategori</p>
+
+                    </div>
 
                 </div>
 

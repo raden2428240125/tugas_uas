@@ -22,21 +22,23 @@
         @foreach ($obats as $obat)
             <div class="col-md-4 mb-4">
 
-                <div class="card shadow-sm h-100 border-0">
+                <div class="card shadow border-0">
 
-                    <div class="card-body">
+                    <div class="card-body p-5">
 
-                        <h4 class="fw-bold">
+                        <h2 class="fw-bold">
 
                             {{ $obat->nama_obat }}
 
-                        </h4>
+                        </h2>
+
+                        <hr>
 
                         <p>
 
                             <strong>Kategori :</strong>
 
-                            {{ $obat->kategori->nama_kategori ?? '-' }}
+                            {{ $obat->kategori->nama_kategori }}
 
                         </p>
 
@@ -66,6 +68,8 @@
 
                         <p>
 
+                            <strong>Deskripsi :</strong>
+
                             {{ $obat->deskripsi }}
 
                         </p>
@@ -73,7 +77,6 @@
                     </div>
 
                 </div>
-
             </div>
         @endforeach
 

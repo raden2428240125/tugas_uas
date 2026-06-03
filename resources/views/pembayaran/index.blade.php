@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -55,7 +55,21 @@
                             </td>
 
                             <td>
-                                {{ $item->status_pembayaran }}
+
+                                @if ($item->status_pembayaran == 'Lunas')
+                                    <span class="badge bg-success">
+                                        Lunas
+                                    </span>
+                                @elseif($item->status_pembayaran == 'Menunggu Verifikasi')
+                                    <span class="badge bg-warning text-dark">
+                                        Menunggu Verifikasi
+                                    </span>
+                                @else
+                                    <span class="badge bg-danger">
+                                        Belum Dibayar
+                                    </span>
+                                @endif
+
                             </td>
 
                             <td>

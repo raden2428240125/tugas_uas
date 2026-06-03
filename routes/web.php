@@ -11,6 +11,7 @@ use App\Http\Controllers\ResepController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\UserObatController;
+use App\Http\Controllers\DetailPesananController;
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::resource('kategori', KategoriController::class);
@@ -21,5 +22,9 @@ Route::resource('resep', ResepController::class);
 Route::resource('pesanan', PesananController::class);
 Route::resource('pembayaran', PembayaranController::class);
 Route::get('/obat-user', [UserObatController::class, 'index']);
-
+Route::get(
+    '/obat-user/{id}',
+    [UserObatController::class, 'show']
+);
+Route::resource('detail-pesanan',DetailPesananController::class);
 

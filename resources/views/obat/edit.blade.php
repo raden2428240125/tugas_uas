@@ -13,19 +13,18 @@
 
         <h2>Edit Obat</h2>
 
-        <form action="/obat/{{ $obat->idobat }}" method="POST">
-
+        <form action="{{ route('obat.update', $obat->id) }}" method="POST">
             @csrf
             @method('PUT')
 
             <div class="mb-3">
                 <label>Nama Obat</label>
-                <input type="text" name="namaobat" class="form-control" value="{{ $obat->namaobat }}">
+                <input type="text" name="nama_obat" class="form-control" value="{{ $obat->nama_obat }}">
             </div>
 
             <div class="mb-3">
                 <label>Jenis Obat</label>
-                <input type="text" name="jenisobat" class="form-control" value="{{ $obat->jenisobat }}">
+                <input type="text" name="jenis_obat" class="form-control" value="{{ $obat->jenis_obat }}">
             </div>
 
             <div class="mb-3">
@@ -47,6 +46,22 @@
             <div class="mb-3">
                 <label>Stok</label>
                 <input type="number" name="stok" class="form-control" value="{{ $obat->stok }}">
+            </div>
+
+            <div class="mb-3">
+                <label>Kategori</label>
+                <select name="kategori_id" class="form-control">
+                    @foreach ($kategoris as $kategori)
+                        <option value="{{ $kategori->id }}" {{ $obat->kategori_id == $kategori->id ? 'selected' : '' }}>
+                            {{ $kategori->nama_kategori }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label>Deskripsi</label>
+                <textarea name="deskripsi" class="form-control">{{ $obat->deskripsi }}</textarea>
             </div>
 
             <button type="submit" class="btn btn-success">

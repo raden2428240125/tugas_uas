@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
     <div class="card border-0 shadow-sm mb-4" style="background: linear-gradient(135deg,#ffd6e0,#ffeef2);">
@@ -21,7 +21,7 @@
 
     <div class="row">
 
-        <div class="col-md-3 mb-4">
+        <div class="col-lg-2 col-md-4 col-6">
 
             <div class="card shadow-sm border-0">
 
@@ -41,7 +41,7 @@
 
         </div>
 
-        <div class="col-md-3 mb-4">
+        <div class="col-lg-2 col-md-4 col-6">
 
             <div class="card shadow-sm border-0">
 
@@ -61,7 +61,7 @@
 
         </div>
 
-        <div class="col-md-3 mb-4">
+        <div class="col-lg-2 col-md-4 col-6">
 
             <div class="card shadow-sm border-0">
 
@@ -82,29 +82,7 @@
         </div>
 
 
-        <div class="col-md-3 mb-4">
-
-            <div class="card shadow-sm border-0">
-
-                <div class="card-body text-center">
-
-                    <h3>💳</h3>
-
-                    <h5>Total Pesanan</h5>
-
-                    <h2 class="fw-bold text-danger">
-                        {{ $totalPesanan }}
-                    </h2>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="col-md-3 mb-4">
+    <div class="col-lg-2 col-md-4 col-6">
 
         <div class="card shadow-sm border-0">
 

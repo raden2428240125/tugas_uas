@@ -1,6 +1,77 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'admin-lte/dist/css/adminlte.min.css';
 
-body{
-    background-color: #fff5f8;
+body {
     font-family: 'Poppins', sans-serif;
+}
+
+/* Sidebar */
+
+.main-sidebar {
+    background: #b76e99 !important;
+}
+
+.brand-link {
+    background: #b76e99 !important;
+    border-bottom: none !important;
+}
+
+.nav-sidebar .nav-link {
+    color: white !important;
+}
+
+.nav-sidebar .nav-link:hover {
+    background: #d88bb3 !important;
+}
+
+.nav-sidebar .nav-link.active {
+    background: #e89ab8 !important;
+}
+
+/* Content */
+
+.content-wrapper {
+    background: #fff7fb !important;
+}
+
+/* Cards */
+
+.card {
+    border-radius: 15px;
+    border: none !important;
+}
+
+.card-header {
+    border: none !important;
+}
+
+.table {
+    background: white;
+}
+
+.brand-link{
+    background:#d68db4 !important;
+}
+
+.app-header{
+    background:#ffffff !important;
+}
+
+.sidebar-dark-primary{
+    background:#b76e9c !important;
+}
+
+.nav-sidebar .nav-link.active{
+    background:#d68db4 !important;
+    color:white !important;
+}
+
+.card{
+    border-radius:15px;
+}
+
+.card-header{
+    background:#f8d7e5 !important;
+    color:#7a3f5c !important;
+    font-weight:600;
 }

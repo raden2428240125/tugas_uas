@@ -44,7 +44,7 @@ class PembayaranController extends Controller
 
         ]);
 
-        return redirect('/pembayaran');
+        return redirect('/pembayaran')->with('success', 'Data pembayaran berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -58,8 +58,7 @@ class PembayaranController extends Controller
             compact(
                 'pembayaran',
                 'pesanan'
-            )
-        );
+            ))->with('success', 'Data pembayaran berhasil diedit');
     }
 
     public function update(Request $request, $id)
@@ -80,7 +79,7 @@ class PembayaranController extends Controller
 
         ]);
 
-        return redirect('/pembayaran');
+        return redirect('/pembayaran')->with('success', 'Data pembayaran berhasil diupdate');
     }
 
     public function destroy($id)
@@ -89,6 +88,6 @@ class PembayaranController extends Controller
 
         $pembayaran->delete();
 
-        return redirect('/pembayaran');
+        return redirect('/pembayaran')->with('success', 'Data pembayaran berhasil dihapus') ;
     }
 }

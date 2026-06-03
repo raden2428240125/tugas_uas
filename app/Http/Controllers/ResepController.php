@@ -31,7 +31,7 @@ class ResepController extends Controller
             'catatan' => $request->catatan
         ]);
 
-        return redirect('/resep');
+        return redirect('/resep')->with('success', 'Data resep berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -46,7 +46,7 @@ class ResepController extends Controller
                 'resep',
                 'pelanggan'
             )
-        );
+        )->with('success', 'Data resep berhasil diedit');
     }
 
     public function update(Request $request, $id)
@@ -60,7 +60,7 @@ class ResepController extends Controller
             'catatan' => $request->catatan
         ]);
 
-        return redirect('/resep');
+        return redirect('/resep')->with('success', 'Data resep berhasil diupdate');
     }
 
     public function destroy($id)
@@ -69,6 +69,6 @@ class ResepController extends Controller
 
         $resep->delete();
 
-        return redirect('/resep');
+        return redirect('/resep')->with('success', 'Data resep berhasil dihapus');
     }
 }

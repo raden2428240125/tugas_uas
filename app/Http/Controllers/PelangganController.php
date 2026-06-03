@@ -23,14 +23,14 @@ class PelangganController extends Controller
     {
         Pelanggan::create($request->all());
 
-        return redirect('/pelanggan');
+        return redirect('/pelanggan')->with('success', 'Data pelanggan berhasil ditambahkan');
     }
 
     public function edit($id)
     {
         $pelanggan = Pelanggan::findOrFail($id);
 
-        return view('pelanggan.edit', compact('pelanggan'));
+        return view('pelanggan.edit', compact('pelanggan'))->with('success', 'Data pelanggan berhasil diedit');
     }
 
     public function update(Request $request, $id)
@@ -39,7 +39,7 @@ class PelangganController extends Controller
 
         $pelanggan->update($request->all());
 
-        return redirect('/pelanggan');
+        return redirect('/pelanggan')->with('success', 'Data pelanggan berhasil diupdate');
     }
 
     public function destroy($id)
@@ -48,6 +48,6 @@ class PelangganController extends Controller
 
         $pelanggan->delete();
 
-        return redirect('/pelanggan');
+        return redirect('/pelanggan')->with('success', 'Data pelanggan berhasil dihapus');
     }
 }

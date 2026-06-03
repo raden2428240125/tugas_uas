@@ -33,8 +33,7 @@ class PesananController extends Controller
             compact(
                 'pelanggan',
                 'resep'
-            )
-        );
+            ))->with('success', 'Data pesanan berhasil ditambahkan');
     }
 
     public function store(Request $request)
@@ -53,7 +52,7 @@ class PesananController extends Controller
 
         ]);
 
-        return redirect('/pesanan');
+        return redirect('/pesanan')->with('success', 'Data pesanan berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -71,7 +70,7 @@ class PesananController extends Controller
                 'pelanggan',
                 'resep'
             )
-        );
+        )->with('success', 'Data pesanan berhasil diedit');
     }
 
     public function update(Request $request, $id)
@@ -92,7 +91,7 @@ class PesananController extends Controller
 
         ]);
 
-        return redirect('/pesanan');
+        return redirect('/pesanan')->with('success', 'Data pesanan berhasil diupdate');
     }
 
     public function destroy($id)
@@ -101,6 +100,6 @@ class PesananController extends Controller
 
         $pesanan->delete();
 
-        return redirect('/pesanan');
+        return redirect('/pesanan')->with('success', 'Data pesanan berhasil dihapus');
     }
 }

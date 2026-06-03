@@ -1,71 +1,104 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
+    <h2 class="mb-4">Data Obat</h2>
 
-<h2 class="mb-4">Data Obat</h2>
+    <a href="/obat/create" class="btn btn-primary mb-3">
+        Tambah Obat
+    </a>
 
-<a href="/obat/create" class="btn btn-primary mb-3">
-    Tambah Obat
-</a>
+    <input type="text" id="searchInput" class="form-control mb-3" placeholder="Cari nama obat...">
 
-<table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped">
 
-    <thead class="table-danger">
-        <tr>
-            <th>ID Obat</th>
-            <th>Nama Obat</th>
-            <th>Jenis Obat</th>
-            <th>Tanggal Kadaluarsa</th>
-            <th>Harga</th>
-            <th>Satuan</th>
-            <th>Stok</th>
-            <th>Aksi</th>
-        </tr>
-    </thead>
+        <thead class="table-danger">
 
-    <tbody>
+            <tr>
 
-        @foreach($obats as $obat)
+                <th>ID</th>
+                <th>Nama Obat</th>
+                <th>Jenis</th>
+                <th>Kategori</th>
+                <th>Harga</th>
+                <th>Satuan</th>
+                <th>Stok</th>
+                <th>Kadaluarsa</th>
+                <th>Deskripsi</th>
+                <th>Aksi</th>
 
-        <tr>
+            </tr>
 
-            <td>{{ $obat->idobat }}</td>
-            <td>{{ $obat->namaobat }}</td>
-            <td>{{ $obat->jenisobat }}</td>
-            <td>{{ $obat->tanggal_kadaluarsa }}</td>
-            <td>{{ $obat->harga }}</td>
-            <td>{{ $obat->satuan }}</td>
-            <td>{{ $obat->stok }}</td>
+        </thead>
 
-            <td>
+        <tbody>
 
-                <a href="/obat/{{ $obat->idobat }}/edit"
-                    class="btn btn-warning btn-sm">
-                    Edit
-                </a>
+            @foreach ($obats as $obat)
+                <tr>
 
-                <form action="/obat/{{ $obat->idobat }}"
-                    method="POST"
-                    class="d-inline">
+                    <td>{{ $obat->id }}</td>
+                    <td>{{ $obat->nama_obat }}</td>
+                    <td>{{ $obat->jenis_obat }}</td>
+                    <td>{{ $obat->kategori->nama_kategori }}</td>
+                    <td>Rp {{ number_format($obat->harga, 0, ',', '.') }}</td>
+                    <td>{{ $obat->satuan }}</td>
+                    <td>{{ $obat->stok }}</td>
+                    <td>{{ $obat->tanggal_kadaluarsa }}</td>
+                    <td>{{ $obat->deskripsi }}</td>
 
-                    @csrf
-                    @method('DELETE')
+                    <td>
 
-                    <button type="submit"
-                        class="btn btn-danger btn-sm">
-                        Hapus
-                    </button>
+                        <a href="/obat/{{ $obat->id }}/edit" class="btn btn-warning btn-sm">
+                            Edit
+                        </a>
 
-                </form>
+                        <form action="/obat/{{ $obat->id }}" method="POST" class="d-inline">
 
-            </td>
+                            @csrf
+                            @method('DELETE')
 
-        </tr>
+                            <button type="submit" class="btn btn-danger btn-sm">
 
-        @endforeach
+                                Hapus
 
-    </tbody>
+                            </button>
 
-</table>
+                        </form>
 
+                    </td>
+
+                </tr>
+            @endforeach
+
+        </tbody>
+
+    </table>
+
+    <script>
+        document
+            .getElementById('searchInput')
+            .addEventListener('keyup', function() {
+
+                let value =
+                    this.value.toLowerCase();
+
+                let rows =
+                    document.querySelectorAll('tbody tr');
+
+                rows.forEach(function(row) {
+
+                    row.style.display =
+                        row.innerText
+                        .toLowerCase()
+                        .includes(value)
+
+                        ?
+                        ''
+
+                        :
+                        'none';
+
+                });
+
+            });
+    </script>
 @endsection

@@ -2,85 +2,204 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Apotek Digital</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
 
-<body>
+<body class="hold-transition sidebar-mini">
 
-    <nav class="navbar navbar-expand-lg shadow-sm" style="background-color:#ffb6c1;">
+    <div class="wrapper">
 
-        <div class="container">
+        <!-- Navbar -->
 
-            <a class="navbar-brand fw-bold text-white" href="/">
-                Apotek Digital
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+
+                    <a class="nav-link" data-widget="pushmenu" href="#">
+
+                        <i class="bi bi-list"></i>
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <!-- Sidebar -->
+
+        <aside class="main-sidebar elevation-4">
+
+            <a href="/dashboard" class="brand-link text-center">
+
+                <span class="brand-text fw-bold text-white">
+
+                    💊 Apotek Digital
+
+                </span>
+
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <div class="sidebar">
 
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <nav class="mt-3">
 
-            <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
 
-                <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
 
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/dashboard">
-                            Dashboard
-                        </a>
-                    </li>
+                            <a href="/dashboard" class="nav-link">
 
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/kategori">
-                            Kategori
-                        </a>
-                    </li>
+                                <i class="nav-icon bi bi-speedometer2"></i>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/obat">
-                            Obat
-                        </a>
-                    </li>
+                                <p>Dashboard</p>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/pelanggan">
-                            Pelanggan
-                        </a>
-                    </li>
+                            </a>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/resep">
-                            Resep
-                        </a>
-                    </li>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/pesanan">
-                            Pesanan
-                        </a>
-                    </li>
+                        <li class="nav-header text-white">
 
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/pembayaran">
-                            Pembayaran
-                        </a>
-                    </li>
+                            MASTER DATA
 
-                </ul>
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a href="/kategori" class="nav-link">
+
+                                <i class="nav-icon bi bi-tags"></i>
+
+                                <p>Kategori</p>
+
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a href="/obat" class="nav-link">
+
+                                <i class="nav-icon bi bi-capsule"></i>
+
+                                <p>Obat</p>
+
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a href="/pelanggan" class="nav-link">
+
+                                <i class="nav-icon bi bi-people"></i>
+
+                                <p>Pelanggan</p>
+
+                            </a>
+
+                        </li>
+
+                        <li class="nav-header text-white">
+
+                            TRANSAKSI
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a href="/pesanan" class="nav-link">
+
+                                <i class="nav-icon bi bi-cart"></i>
+
+                                <p>Pesanan</p>
+
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a href="/detail-pesanan" class="nav-link">
+
+                                <i class="nav-icon bi bi-receipt"></i>
+
+                                <p>Detail Pesanan</p>
+
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a href="/pembayaran" class="nav-link">
+
+                                <i class="nav-icon bi bi-credit-card"></i>
+
+                                <p>Pembayaran</p>
+
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a href="/resep" class="nav-link">
+
+                                <i class="nav-icon bi bi-file-earmark-medical"></i>
+
+                                <p>Resep</p>
+
+                            </a>
+
+                        </li>
+
+                        <li class="nav-header text-white">
+
+                            USER
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a href="/obat-user" class="nav-link">
+
+                                <i class="nav-icon bi bi-shop"></i>
+
+                                <p>Katalog Obat</p>
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </nav>
 
             </div>
 
+        </aside>
+
+        <!-- Content -->
+
+        <div class="content-wrapper p-4">
+
+            @yield('content')
+
         </div>
 
-    </nav>
-
-    <div class="container mt-5">
-        @yield('content')
     </div>
 
 </body>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -8,6 +8,8 @@
         <a href="/pelanggan/create" class="btn btn-primary">
             + Tambah Pelanggan
         </a>
+
+        <input type="text" id="searchInput" class="form-control w-25" placeholder="Cari pelanggan...">
 
     </div>
 

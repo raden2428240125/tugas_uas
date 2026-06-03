@@ -17,11 +17,6 @@
             @csrf
 
             <div class="mb-3">
-                <label>ID Obat</label>
-                <input type="text" name="idobat" class="form-control">
-            </div>
-
-            <div class="mb-3">
                 <label>Nama Obat</label>
                 <input type="text" name="nama_obat" class="form-control">
             </div>
@@ -49,6 +44,20 @@
             <div class="mb-3">
                 <label>Stok</label>
                 <input type="number" name="stok" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label>Kategori</label>
+                <select name="kategori_id" class="form-control">
+                    @foreach ($kategoris as $kategori)
+                        <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label>Deskripsi</label>
+                <textarea name="deskripsi" class="form-control"></textarea>
             </div>
 
             <button type="submit" class="btn btn-success">

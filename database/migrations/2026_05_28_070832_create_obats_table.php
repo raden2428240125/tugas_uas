@@ -19,11 +19,13 @@ return new class extends Migration
 
             $table->string('jenis_obat');
 
+            $table->date('tanggal_kadaluarsa');
+
             $table->integer('harga');
 
-            $table->integer('stok');
+            $table->string('satuan');
 
-            $table->date('tanggal_kadaluarsa');
+            $table->integer('stok');
 
             $table->text('deskripsi')->nullable();
 

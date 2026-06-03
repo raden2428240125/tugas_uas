@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Obat;
 use Illuminate\Http\Request;
+use App\Models\Kategori;
 
 class ObatController extends Controller
 {
@@ -21,7 +22,12 @@ class ObatController extends Controller
      */
     public function create()
     {
-        return view('obat.create');
+        $kategoris = Kategori::all();
+
+        return view(
+            'obat.create',
+            compact('kategoris')
+        );
     }
 
     /**
@@ -32,14 +38,19 @@ class ObatController extends Controller
         Obat::create([
             'nama_obat' => $request->nama_obat,
             'jenis_obat' => $request->jenis_obat,
-            'harga' => $request->harga,
-            'stok' => $request->stok,
             'tanggal_kadaluarsa' => $request->tanggal_kadaluarsa,
-            'deskripsi' => $request->deskripsi,
-            'kategori_id' => $request->kategori_id
+            'harga' => $request->harga,
+            'satuan' => $request->satuan,
+            'stok' => $request->stok,
+            'kategori_id' => $request->kategori_id,
+            'deskripsi' => $request->deskripsi
         ]);
 
-        return redirect('/obat');
+        return redirect('/obat')
+            ->with(
+                'success',
+                'Data obat berhasil ditambahkan'
+            );
     }
 
     /**
@@ -55,7 +66,12 @@ class ObatController extends Controller
      */
     public function edit(Obat $obat)
     {
-        return view('obat.edit', compact('obat'));
+        $kategoris = Kategori::all();
+
+        return view(
+            'obat.edit',
+            compact('obat', 'kategoris')
+        );
     }
 
     /**
@@ -66,14 +82,16 @@ class ObatController extends Controller
         $obat->update([
             'nama_obat' => $request->nama_obat,
             'jenis_obat' => $request->jenis_obat,
-            'harga' => $request->harga,
-            'stok' => $request->stok,
             'tanggal_kadaluarsa' => $request->tanggal_kadaluarsa,
-            'deskripsi' => $request->deskripsi,
-            'kategori_id' => $request->kategori_id
+            'harga' => $request->harga,
+            'satuan' => $request->satuan,
+            'stok' => $request->stok,
+            'kategori_id' => $request->kategori_id,
+            'deskripsi' => $request->deskripsi
         ]);
 
-        return redirect('/obat');
+        return redirect('/obat')
+            ->with('success', 'Data obat berhasil diupdate');
     }
 
     /**
@@ -83,6 +101,10 @@ class ObatController extends Controller
     {
         $obat->delete();
 
-        return redirect('/obat');
+        return redirect('/obat')
+            ->with(
+                'success',
+                'Data obat berhasil dihapus'
+            );
     }
 }

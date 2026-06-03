@@ -14,13 +14,13 @@ class Pelanggan extends Model
         'alamat'
     ];
 
-    public function reseps()
-    {
-        return $this->hasMany(Resep::class);
-    }
-
     public function pesanans()
     {
         return $this->hasMany(Pesanan::class);
+    }
+
+    public function reseps()
+    {
+        return $this->hasMany(Resep::class);
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -54,7 +54,31 @@
 
                             <td>Rp {{ number_format($item->total_harga, 0, ',', '.') }}</td>
 
-                            <td>{{ $item->status }}</td>
+                            <td>
+
+                                @if ($item->status == 'Selesai')
+                                    <span class="badge bg-success">
+                                        Selesai
+                                    </span>
+                                @elseif($item->status == 'Siap Diambil')
+                                    <span class="badge bg-info">
+                                        Siap Diambil
+                                    </span>
+                                @elseif($item->status == 'Diproses')
+                                    <span class="badge bg-warning text-dark">
+                                        Diproses
+                                    </span>
+                                @elseif($item->status == 'Dibatalkan')
+                                    <span class="badge bg-danger">
+                                        Dibatalkan
+                                    </span>
+                                @else
+                                    <span class="badge bg-secondary">
+                                        Menunggu Pembayaran
+                                    </span>
+                                @endif
+
+                            </td>
 
                             <td>
 
