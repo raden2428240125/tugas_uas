@@ -10,6 +10,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@4.0.0-beta3/dist/css/adminlte.min.css">
 </head>
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
@@ -42,7 +44,7 @@
 
                         <span class="nav-link fw-semibold">
 
-                            Apotek Digital
+                            {{ Auth::user()->name }}
 
                         </span>
 
@@ -66,7 +68,7 @@
 
                     <span class="brand-text fw-bold">
 
-                        💊 Apotek Digital
+                        APOTEK DIGITAL
 
                     </span>
 
@@ -222,6 +224,17 @@
 
                         </li>
 
+                        <li class="nav-item mt-3">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <button type="submit" class="nav-link btn btn-link text-start text-white">
+                                    <i class="nav-icon bi bi-box-arrow-right"></i>
+                                    <p>Logout</p>
+                                </button>
+                            </form>
+                        </li>
+
                     </ul>
 
                 </nav>
@@ -245,7 +258,7 @@
         </main>
 
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@4.0.0-beta3/dist/js/adminlte.min.js"></script>
 </body>
 
 </html>

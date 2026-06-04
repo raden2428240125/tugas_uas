@@ -1,207 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Apotek Digital</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+    <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@4.0.0-beta3/dist/css/adminlte.min.css">
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="hold-transition sidebar-mini">
-
-    <div class="wrapper">
-
-        <!-- Navbar -->
-
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-
-            <ul class="navbar-nav">
-
-                <li class="nav-item">
-
-                    <a class="nav-link" data-widget="pushmenu" href="#">
-
-                        <i class="bi bi-list"></i>
-
-                    </a>
-
-                </li>
-
-            </ul>
-
-        </nav>
-
-        <!-- Sidebar -->
-
-        <aside class="main-sidebar elevation-4">
-
-            <a href="/dashboard" class="brand-link text-center">
-
-                <span class="brand-text fw-bold text-white">
-
-                    💊 Apotek Digital
-
-                </span>
-
-            </a>
-
-            <div class="sidebar">
-
-                <nav class="mt-3">
-
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
-
-                        <li class="nav-item">
-
-                            <a href="/dashboard" class="nav-link">
-
-                                <i class="nav-icon bi bi-speedometer2"></i>
-
-                                <p>Dashboard</p>
-
-                            </a>
-
-                        </li>
-
-                        <li class="nav-header text-white">
-
-                            MASTER DATA
-
-                        </li>
-
-                        <li class="nav-item">
-
-                            <a href="/kategori" class="nav-link">
-
-                                <i class="nav-icon bi bi-tags"></i>
-
-                                <p>Kategori</p>
-
-                            </a>
-
-                        </li>
-
-                        <li class="nav-item">
-
-                            <a href="/obat" class="nav-link">
-
-                                <i class="nav-icon bi bi-capsule"></i>
-
-                                <p>Obat</p>
-
-                            </a>
-
-                        </li>
-
-                        <li class="nav-item">
-
-                            <a href="/pelanggan" class="nav-link">
-
-                                <i class="nav-icon bi bi-people"></i>
-
-                                <p>Pelanggan</p>
-
-                            </a>
-
-                        </li>
-
-                        <li class="nav-header text-white">
-
-                            TRANSAKSI
-
-                        </li>
-
-                        <li class="nav-item">
-
-                            <a href="/pesanan" class="nav-link">
-
-                                <i class="nav-icon bi bi-cart"></i>
-
-                                <p>Pesanan</p>
-
-                            </a>
-
-                        </li>
-
-                        <li class="nav-item">
-
-                            <a href="/detail-pesanan" class="nav-link">
-
-                                <i class="nav-icon bi bi-receipt"></i>
-
-                                <p>Detail Pesanan</p>
-
-                            </a>
-
-                        </li>
-
-                        <li class="nav-item">
-
-                            <a href="/pembayaran" class="nav-link">
-
-                                <i class="nav-icon bi bi-credit-card"></i>
-
-                                <p>Pembayaran</p>
-
-                            </a>
-
-                        </li>
-
-                        <li class="nav-item">
-
-                            <a href="/resep" class="nav-link">
-
-                                <i class="nav-icon bi bi-file-earmark-medical"></i>
-
-                                <p>Resep</p>
-
-                            </a>
-
-                        </li>
-
-                        <li class="nav-header text-white">
-
-                            USER
-
-                        </li>
-
-                        <li class="nav-item">
-
-                            <a href="/obat-user" class="nav-link">
-
-                                <i class="nav-icon bi bi-shop"></i>
-
-                                <p>Katalog Obat</p>
-
-                            </a>
-
-                        </li>
-
-                    </ul>
-
-                </nav>
-
-            </div>
-
-        </aside>
-
-        <!-- Content -->
-
-        <div class="content-wrapper p-4">
-
+<body class="font-sans antialiased">
+    <div class="min-h-screen bg-gray-100">
+        @include('layouts.navigation')
+
+        <!-- Page Heading -->
+        @isset($header)
+            <header class="bg-white shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    {{ $header }}
+                </div>
+            </header>
+        @endisset
+
+        <!-- Page Content -->
+        <main>
             @yield('content')
-
-        </div>
-
+        </main>
     </div>
-
 </body>
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@4.0.0-beta3/dist/js/adminlte.min.js"></script>
 
 </html>
