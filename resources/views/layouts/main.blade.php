@@ -66,7 +66,7 @@
 
                 <a href="/dashboard" class="brand-link">
 
-                    <span class="brand-text fw-bold">
+                    <span class="brand-text fw-bold bi-hospital">
 
                         APOTEK DIGITAL
 
@@ -91,9 +91,8 @@
                                 <p>Dashboard</p>
 
                             </a>
-
+                            
                         </li>
-
 
                         <li class="nav-item">
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
@@ -56,15 +58,16 @@
                     Sistem manajemen apotik berbasis Laravel & Bootstrap
                 </p>
 
-                <button class="btn btn-success">
+                <a href="{{ route('login') }}" class="btn btn-success">
                     Masuk Dashboard
-                </button>
+                </a>
 
             </div>
         </div>
 
     </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
