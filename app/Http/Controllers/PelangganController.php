@@ -51,3 +51,4 @@ class PelangganController extends Controller
         return redirect('/pelanggan')->with('success', 'Data pelanggan berhasil dihapus');
     }
 }
+
