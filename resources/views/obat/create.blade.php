@@ -48,11 +48,18 @@
 
             <div class="mb-3">
                 <label>Kategori</label>
-                <select name="kategori_id" class="form-control">
-                    @foreach ($kategoris as $kategori)
-                        <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
-                    @endforeach
-                </select>
+                @if($kategoris->isEmpty())
+                    <div class="alert alert-warning p-2">
+                        Belum ada kategori! Silakan <a href="{{ route('kategori.create') }}">tambah kategori</a> terlebih dahulu.
+                    </div>
+                @else
+                    <select name="kategori_id" class="form-control" required>
+                        <option value="" disabled selected>-- Pilih Kategori --</option>
+                        @foreach ($kategoris as $kategori)
+                            <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
+                        @endforeach
+                    </select>
+                @endif
             </div>
 
             <div class="mb-3">

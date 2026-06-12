@@ -64,7 +64,7 @@
 
             <div class="sidebar-brand">
 
-                <a href="/dashboard" class="brand-link">
+                <a href="/admin/dashboard" class="brand-link">
 
                     <span class="brand-text fw-bold bi-hospital">
 
@@ -84,7 +84,7 @@
 
                         <li class="nav-item">
 
-                            <a href="/dashboard" class="nav-link">
+                            <a href="/admin/dashboard" class="nav-link">
 
                                 <i class="nav-icon bi bi-speedometer2"></i>
 

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SIPA - Solusi Kesehatan Digital Masa Depan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#7b7487",
+                    "on-secondary-fixed": "#1b1735",
+                    "secondary-container": "#dcd5fd",
+                    "inverse-primary": "#d2bbff",
+                    "tertiary-fixed-dim": "#cdc2d9",
+                    "error": "#ba1a1a",
+                    "surface": "#fcf8ff",
+                    "surface-container-high": "#e9e5ff",
+                    "tertiary-container": "#6b6376",
+                    "on-background": "#181445",
+                    "on-surface": "#181445",
+                    "surface-container-low": "#f6f2ff",
+                    "primary-fixed": "#eaddff",
+                    "inverse-on-surface": "#f3eeff",
+                    "surface-tint": "#732ee4",
+                    "surface-variant": "#e3dfff",
+                    "on-secondary-container": "#605b7d",
+                    "secondary-fixed": "#e5deff",
+                    "primary": "#630ed4",
+                    "surface-bright": "#fcf8ff",
+                    "outline-variant": "#ccc3d8",
+                    "on-primary-fixed-variant": "#5a00c6",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed": "#25005a",
+                    "secondary-fixed-dim": "#c8c2e9",
+                    "tertiary": "#524b5e",
+                    "primary-fixed-dim": "#d2bbff",
+                    "primary-container": "#7c3aed",
+                    "secondary": "#5f5a7c",
+                    "surface-container": "#efebff",
+                    "on-tertiary-fixed-variant": "#4a4456",
+                    "surface-container-highest": "#e3dfff",
+                    "on-surface-variant": "#4a4455",
+                    "on-secondary-fixed-variant": "#474363",
+                    "on-tertiary-fixed": "#1e1929",
+                    "error-container": "#ffdad6",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#dad6ff",
+                    "tertiary-fixed": "#e9def5",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#2d2a5b",
+                    "background": "#fcf8ff",
+                    "on-primary-container": "#ede0ff",
+                    "on-tertiary-container": "#ece1f8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(243, 232, 255, 0.5);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #630ed4 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-anim {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-20 bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+<div class="flex items-center gap-12">
+<span class="font-display-lg text-display-lg font-black text-primary dark:text-primary-fixed tracking-tight">SIPA</span>
+<div class="hidden md:flex gap-8">
+<a class="font-label-md text-label-md text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary py-2" href="#">Beranda</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant/70 hover:text-primary transition-colors py-2" href="#">Katalog Obat</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant/70 hover:text-primary transition-colors py-2" href="#">Resep</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant/70 hover:text-primary transition-colors py-2" href="#">Pesanan</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant/70 hover:text-primary transition-colors py-2" href="#">Profil</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-primary-container/10 p-2 rounded-full transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-primary-container/10 p-2 rounded-full transition-colors">shopping_cart</button>
+<div class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="User Profile Avatar" data-alt="A professional close-up portrait of a friendly Southeast Asian male doctor in his late 30s. He is wearing a clean white clinical coat with a stethoscope around his neck. The lighting is soft and studio-quality, emphasizing a professional, empathetic, and trustworthy healthcare persona. The background is a blurred modern clinic with soft purple and lavender tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmYh6F1radwVs25YTEumwyUbbSaXFWaAmzKVjsxFNXGM__1xSzNyQwGxVyLa4IGCAzPNK3CKDwcAzQgnvILFB4rIf6UrMF0DaBjC-BRK-mb6MRTY3OUrR_j9x9d4WQNpA4AgTvACPpWU0y1v917pjkxkeet3jPZCVEIAiP080-7LGUacvfk_GWNu3QYOUxVLeOZCUhmWdAWTFYp3p9IJacbvdBYL2Uef73nZ8QG27zCViY_uS6fqCY1v_l3aOZhcljuuupq0LlyJAj"/>
+</div>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative px-margin-desktop py-16 overflow-hidden">
+
+<div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-8">
+<div>
+<span class="inline-block px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md mb-6">Sistem Informasi Pelayanan Apotek</span>
+<h1 class="font-display-lg text-display-lg text-on-background mb-4">
+                            Halo, <span class="text-gradient">Dr. Adrian</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                            Selamat datang di ekosistem kesehatan digital masa depan. Kelola resep, pantau inventaris obat, dan berikan layanan terbaik untuk pasien Anda dalam satu platform yang terintegrasi.
+                        </p>
+</div>
+<!-- Modern Search Bar -->
+<div class="relative max-w-xl group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-primary">search</span>
+</div>
+<input class="w-full pl-12 pr-32 py-5 bg-white border-2 border-outline-variant/30 rounded-xl focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all font-body-md text-body-md shadow-lg shadow-primary/5 outline-none" placeholder="Cari obat, kategori, atau gejala..." type="text"/>
+<button class="absolute right-3 top-2.5 px-6 py-2.5 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container transition-all active:scale-95 shadow-md shadow-primary/20">Cari Sekarang</button>
+</div>
+<div class="flex items-center gap-8 pt-4">
+<div class="flex -space-x-3">
+<img alt="Doctor 1" class="h-10 w-10 rounded-full border-2 border-white" data-alt="Close-up headshot of a professional female doctor smiling warmly. Soft clinical lighting against a clean, minimalist lavender background. High-end healthcare aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhFsZ7-t3VVlD0vvGAA7K57RfVAfiV6xgR0fCKIQ75h7dhpKfI93WICe2n5A8gpY3pkH0fAwHra42X2-44MzR87vc-TVPX3uCyxYmXuUeZo64LlhPObMCRPpbUmqT323FY84EjpBOmv8Y-hSfle67y6cb-aHXp-1gMUK7wJviSwqGZjPPB5y6jUnKZEe9v7uq8r5ne9TBeFKP90vUi2wj9kNiIKx1aD-ySRLqgTybhyOm0So98a6SyayYLGW5AEHwcZtw29bJ2BrVK"/>
+<img alt="Doctor 2" class="h-10 w-10 rounded-full border-2 border-white" data-alt="Portrait of a young medical professional looking confident. Balanced softbox lighting in a modern futuristic laboratory setting. Palette of soft whites and purples." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqf8EVqOojc_e8J6N7XHaHGqPhOHKoL9qJOT_o5h7zX7KT20qnfc0Uwt2yq6dTgxtML-5dPZAo9w73_LhJzf9BJevgcXPkCPA7NNl3vGxFdG9eo6XdOVMok-PXgfny2OHotfDU8kVJrXWSrZNZOLe60GGNJG0lF5mee4EZ3QgzQtDlK11jli7aceLf7VObWdSa3YDjLYLlPtzGzzhrqZvapUTLID8KWTMUFHMRoSqhqilvlB931WbpP1nvY0zsL4foBEm2aE4b0qpu"/>
+<img alt="Doctor 3" class="h-10 w-10 rounded-full border-2 border-white" data-alt="Mid-age male pharmacist in a high-tech pharmacy environment. Soft, glowing ambient lights in blue and violet tones. Clean, professional, and sophisticated look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAocrcvW4D0vjCexDS5Z-mppaMY-UKeYkhjDwjpeklDJQ_pc_5ZGn2_qoEQH1k3NHSEVexdV2MeMU6xg35-vvqJzAVUu7zduGbLN95EDBuznNusgM6oh2nygtGUmx19YU2Q1K9n5Y0c7OGLuTyz6V2pJS1_d5jNfx5Xk8GU1Aly9ECCnikjl06hDi9NTN4LdMlgHtAFMiQBA4Z3EJcsjpYHbLN51whUGCWqu8OEMuPNq8mwYWLQfrgQGlo7RPiV095v4LnADsvtBSyw"/>
+</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">
+<span class="text-primary font-bold">120+ Dokter</span> telah bergabung<br/>dalam jaringan SIPA minggu ini
+                        </div>
+</div>
+</div>
+<div class="relative hidden lg:block">
+<div class="absolute -top-10 -right-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-10 -left-10 w-64 h-64 bg-secondary-container/20 rounded-full blur-3xl"></div>
+<div class="relative z-10 glass-card rounded-[32px] p-4 float-anim">
+<img alt="Medical Visual" class="rounded-[24px] shadow-2xl" data-alt="A highly detailed, cinematic shot of high-end medical equipment and digital interfaces. Floating holographic displays show medical data and 3D molecular structures in a pristine, futuristic lab. The color palette is dominated by elegant purples, glowing lavenders, and crisp whites. The lighting is ethereal and clean, evoking a sense of advanced technological wellness and precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz73m3TU-ZoFCvjRw9iAFJrOd9ctjPsGZYKPuFTHirOY0EQCdK_v5RuC6mGVvWarEu3a1qiCNxKOoNliEEHytGUMR1Mq3TT2tMF_OkdAIsoK51N1QHT3Y-vGbj_-LXss7sF15X-EMxZWeRMmSFjWIvty2VmzofydFn6adFD52Du5V4is1gw_a5s5S5vu4UzSjsTbPsLffGQiZIOWFpDMGEP1HB72I7jlhrgsWfy5spyfi2r6B-7La2wNNPkAsHVrEem7No8T2tO_1A"/>
+</div>
+<!-- Vitals Badge Overlay -->
+<div class="absolute top-1/4 -left-12 glass-card p-4 rounded-2xl shadow-xl flex items-center gap-4 animate-bounce duration-[3000ms]">
+<div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Detak Jantung</div>
+<div class="font-headline-md text-headline-md text-primary">72 <span class="text-sm font-normal">BPM</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Category Grid Section -->
+<section class="px-margin-desktop py-20 bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-2">Kategori Layanan</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Temukan kebutuhan medis berdasarkan spesialisasi</p>
+</div>
+<a class="text-primary font-label-md text-label-md flex items-center gap-2 group hover:underline" href="#">
+                        Lihat Semua <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+<!-- Cardiology -->
+<div class="group cursor-pointer p-6 bg-white border border-outline-variant/30 rounded-2xl hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all text-center">
+<div class="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">cardiology</span>
+</div>
+<h3 class="font-label-md text-label-md text-on-surface">Kardiologi</h3>
+</div>
+<!-- Pediatrics -->
+<div class="group cursor-pointer p-6 bg-white border border-outline-variant/30 rounded-2xl hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all text-center">
+<div class="w-16 h-16 mx-auto bg-secondary-container/30 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-on-secondary-container text-3xl">child_care</span>
+</div>
+<h3 class="font-label-md text-label-md text-on-surface">Pediatri</h3>
+</div>
+<!-- Neurology -->
+<div class="group cursor-pointer p-6 bg-white border border-outline-variant/30 rounded-2xl hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all text-center">
+<div class="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">neurology</span>
+</div>
+<h3 class="font-label-md text-label-md text-on-surface">Neurologi</h3>
+</div>
+<!-- Dermatology -->
+<div class="group cursor-pointer p-6 bg-white border border-outline-variant/30 rounded-2xl hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all text-center">
+<div class="w-16 h-16 mx-auto bg-secondary-container/30 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-on-secondary-container text-3xl">dermatology</span>
+</div>
+<h3 class="font-label-md text-label-md text-on-surface">Dermatologi</h3>
+</div>
+<!-- Surgery -->
+<div class="group cursor-pointer p-6 bg-white border border-outline-variant/30 rounded-2xl hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all text-center">
+<div class="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">charger</span>
+</div>
+<h3 class="font-label-md text-label-md text-on-surface">Bedah Umum</h3>
+</div>
+<!-- Pharmacy -->
+<div class="group cursor-pointer p-6 bg-white border border-outline-variant/30 rounded-2xl hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all text-center">
+<div class="w-16 h-16 mx-auto bg-secondary-container/30 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-on-secondary-container text-3xl">medical_services</span>
+</div>
+<h3 class="font-label-md text-label-md text-on-surface">Farmasi</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Products Slider -->
+<section class="px-margin-desktop py-20 bg-background overflow-hidden">
+<div class="max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-2">Produk Unggulan</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Kualitas terjamin untuk pemulihan optimal</p>
+</div>
+<div class="flex gap-4">
+<button class="h-12 w-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary-container/10 transition-colors" id="prevBtn">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="h-12 w-12 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-primary-container transition-all active:scale-90" id="nextBtn">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex gap-8 overflow-x-auto hide-scrollbar scroll-smooth pb-8" id="productSlider">
+<!-- Product 1 -->
+<div class="min-w-[320px] bg-white rounded-3xl overflow-hidden border border-outline-variant/20 hover:shadow-2xl hover:shadow-primary/10 transition-all group">
+<div class="h-48 overflow-hidden relative">
+<img alt="Vitamin C" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A premium commercial photograph of a sophisticated medical supplement bottle. The bottle is minimalist and elegant, placed on a reflecting surface with soft purple studio lighting. In the background, there are artistic blurs of lavender and white light. The image exudes a high-end, pharmaceutical quality aesthetic with crystal clear focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3WfydNKUPfsdqoHioq7gmFtTzoSeCWyfKrIYxIYhA_WH1AKfWQCO_WgjAt8wuYWXf30Cu1tsipvOg6poUsdygIG1MDwGgeHrsv7fO4LX2XDhJponuJe0uKbYScfLSJxXk29H5h3KAGjV9jRBfL10ebxSc_ANthOHwwAjXHWSZQvLu023d-QtazSUgCj_E9MTUfEA02GhCh0Wux2MghnOJafddr2SODDOj2vZ9Als-7HaQ0cJasU1bfCr0ag8np-0XWwgKy21my1BD"/>
+<div class="absolute top-4 left-4 bg-primary px-3 py-1 rounded-lg font-label-sm text-label-sm text-on-primary">Terlaris</div>
+</div>
+<div class="p-6 space-y-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">ImmunoBoost Ultra</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">Vitamin C 1000mg + Zinc</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-headline-md text-headline-md text-primary">Rp 145.000</span>
+<button class="h-10 w-10 bg-secondary-container text-on-secondary-container rounded-xl flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="min-w-[320px] bg-white rounded-3xl overflow-hidden border border-outline-variant/20 hover:shadow-2xl hover:shadow-primary/10 transition-all group">
+<div class="h-48 overflow-hidden relative">
+<img alt="Blood Pressure" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-tech digital blood pressure monitor displayed in a clean, professional medical setting. The device has a glowing purple interface and sleek white design. The surroundings are minimalist with soft lavender bokeh lights. The shot is high-contrast and evokes medical precision and digital innovation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1bTNxffUeBUICaDZlZP1bf02WA8MuhM6Tk40RmBhPq4Njzs2NgMyaQRR62hTSLcCjIMOxjITK2KFim5tbruioTD0N6NYaE6blCIPjC5HxtKCyHkSHebPAj0txnoQx6CoQ7_IM4FUfHW1lW8Y0GJh5xLsxfSoPzmp3aAm6WnHHT4sOedDs-aNlcB2UPV-o3SLAmyzF-i3fO6ZBHmQkfVVM5RT0qwdkT5i6iatU157D8w4Wobz2TNURqb70IJYcsRWqMalCh8CJPDTE"/>
+<div class="absolute top-4 left-4 bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-lg font-label-sm text-label-sm">Baru</div>
+</div>
+<div class="p-6 space-y-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">SIPA Smart BP</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">Tensimeter Digital IoT</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-headline-md text-headline-md text-primary">Rp 899.000</span>
+<button class="h-10 w-10 bg-secondary-container text-on-secondary-container rounded-xl flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="min-w-[320px] bg-white rounded-3xl overflow-hidden border border-outline-variant/20 hover:shadow-2xl hover:shadow-primary/10 transition-all group">
+<div class="h-48 overflow-hidden relative">
+<img alt="Medicine" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An artistic and premium display of various modern medical capsules and pills arranged on a clean white surface. High-key lighting with a sophisticated soft purple color grade. The composition is minimalist and clinical yet visually striking, symbolizing pharmaceutical excellence and health science." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8Nr0gZ9JI9zN-Agx2YhsOAb1odO0OfBA3coBDDc_QqVU2tEGIUIeCo3QFoPa4JydmUIHhBeI_ordEAvN57Sm4PGokyPXajorg9LUAtlSXm51Veag4mVpGPKv5dyizC04TYK2bPPaOz5NT4Tb89gCzL8rIJsnmSb8CbOt1IDiI4d0RSmWcuhHCrwsGr65VnMRCozKQGjN1DK3sVD6YNCXyua8-mcydMgjnelgbb6K4_fjTX2K-RgWntmFPsppBAoihbeUVl_bsR6LQ"/>
+</div>
+<div class="p-6 space-y-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">NeuroZen Forte</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">Vitamin Saraf Kompleks</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-headline-md text-headline-md text-primary">Rp 210.000</span>
+<button class="h-10 w-10 bg-secondary-container text-on-secondary-container rounded-xl flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="min-w-[320px] bg-white rounded-3xl overflow-hidden border border-outline-variant/20 hover:shadow-2xl hover:shadow-primary/10 transition-all group">
+<div class="h-48 overflow-hidden relative">
+<img alt="Essential Oil" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A premium essential oil bottle in a tranquil wellness setting. The lighting is low-key and moody with elegant purple highlights. The background features soft blurs of botanical elements and warm light. The image captures a sense of therapeutic calm and luxury wellness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc32hnD-3-BPXrzLQX02FoINVhxYya2ep6X8G1T5e8m2vjo40s1kHF4mMcRLJEU5nZZZRJUvAVEVaoINR4Kkt6PNokym76YV33Bt_YC5BlJ1R7mXKFIQM2y4GBSu9_SWbbve5JRKtVjwhrXAU4vSkHN_FSJCyU6rxZSlNTx-JDaUPiKKpUWELnZrxkvdsGwLsH4L4OI1XsvUjRA9mTaRo_yJCvJIVXr4SRsu6j1WaKr2rxw6QWaVL2UNtvJEni-8YSMGpr4ogaqtQk"/>
+</div>
+<div class="p-6 space-y-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">AromaCalm Pure</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">Minyak Terapi Relaksasi</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-headline-md text-headline-md text-primary">Rp 175.000</span>
+<button class="h-10 w-10 bg-secondary-container text-on-secondary-container rounded-xl flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Bento Grid -->
+<section class="px-margin-desktop py-20 bg-surface-container-low">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Stat Card 1 -->
+<div class="md:col-span-2 glass-card p-10 rounded-[32px] flex flex-col md:flex-row items-center gap-10">
+<div class="flex-1 space-y-6">
+<h2 class="font-headline-lg text-headline-lg text-on-background">Monitor Kesehatan Real-time</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Analisis data kesehatan pasien dengan akurasi tinggi menggunakan integrasi AI kami yang mutakhir.</p>
+<div class="flex gap-4">
+<div class="px-6 py-3 bg-primary rounded-xl text-on-primary font-label-md text-label-md shadow-lg shadow-primary/20">Mulai Analisis</div>
+<div class="px-6 py-3 border border-primary/20 rounded-xl text-primary font-label-md text-label-md hover:bg-white transition-colors">Pelajari Lebih Lanjut</div>
+</div>
+</div>
+<div class="w-full md:w-64 aspect-square bg-white rounded-2xl p-6 border border-primary/10 shadow-inner flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary text-4xl">monitoring</span>
+<span class="text-green-500 font-label-sm text-label-sm">+12% vs Kemarin</span>
+</div>
+<div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">Pasien Hari Ini</div>
+<div class="text-display-lg font-display-lg text-primary">48</div>
+</div>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-primary p-10 rounded-[32px] text-on-primary relative overflow-hidden group">
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+<div class="relative z-10 space-y-6 h-full flex flex-col justify-between">
+<span class="material-symbols-outlined text-5xl">verified_user</span>
+<div>
+<div class="font-display-lg text-display-lg mb-2">99.9%</div>
+<div class="font-headline-md text-headline-md opacity-90">Keamanan Data Terjamin</div>
+</div>
+<p class="font-label-sm text-label-sm opacity-80">Sesuai standar global privasi medis (GDPR &amp; HIPAA)</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full px-margin-desktop py-20 flex flex-col items-center bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant/30">
+<div class="max-w-container-max w-full grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="md:col-span-2 space-y-6">
+<span class="font-headline-md text-headline-md font-extrabold text-primary">SIPA</span>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm">
+                    Solusi terpadu untuk pelayanan kesehatan modern. Membantu tenaga medis dan pasien terhubung dalam satu platform yang cerdas dan efisien.
+                </p>
+<div class="flex gap-4">
+<div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all cursor-pointer">
+<span class="material-symbols-outlined">face_nod</span>
+</div>
+<div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all cursor-pointer">
+<span class="material-symbols-outlined">share</span>
+</div>
+<div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all cursor-pointer">
+<span class="material-symbols-outlined">mail</span>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<h4 class="font-label-md text-label-md text-on-surface font-bold">Tautan Cepat</h4>
+<div class="flex flex-col gap-4">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline decoration-primary transition-all" href="#">Tentang Kami</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline decoration-primary transition-all" href="#">Layanan</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline decoration-primary transition-all" href="#">Hubungi Kami</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline decoration-primary transition-all" href="#">FAQ</a>
+</div>
+</div>
+<div class="space-y-6">
+<h4 class="font-label-md text-label-md text-on-surface font-bold">Legal</h4>
+<div class="flex flex-col gap-4">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline decoration-primary transition-all" href="#">Syarat &amp; Ketentuan</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline decoration-primary transition-all" href="#">Kebijakan Privasi</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline decoration-primary transition-all" href="#">Kode Etik</a>
+</div>
+</div>
+</div>
+<div class="w-full pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-4">
+<span class="font-label-sm text-label-sm text-on-surface-variant">© 2024 SIPA. Solusi Kesehatan Digital Masa Depan.</span>
+<div class="flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">language</span>
+                Bahasa Indonesia
+            </div>
+</div>
+</footer>
+<!-- Floating Action Button (Active only on Home) -->
+<button class="fixed bottom-8 right-8 h-16 w-16 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40 group">
+<span class="material-symbols-outlined text-3xl">add</span>
+<div class="absolute right-full mr-4 px-4 py-2 bg-inverse-surface text-on-primary-container rounded-lg font-label-md text-label-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            Resep Baru
+        </div>
+</button>
+<script>
+        // Simple slider interaction
+        const slider = document.getElementById('productSlider');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+
+        nextBtn.addEventListener('click', () => {
+            slider.scrollBy({ left: 350, behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            slider.scrollBy({ left: -350, behavior: 'smooth' });
+        });
+
+        // Hover animation for cards
+        const cards = document.querySelectorAll('.group');
+        cards.forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+
+        // Active Navigation Logic
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                navLinks.forEach(l => {
+                    l.classList.remove('text-primary', 'dark:text-primary-fixed-dim', 'font-bold', 'border-b-2', 'border-primary');
+                    l.classList.add('text-on-surface-variant', 'dark:text-on-surface-variant/70');
+                });
+                link.classList.add('text-primary', 'dark:text-primary-fixed-dim', 'font-bold', 'border-b-2', 'border-primary');
+                link.classList.remove('text-on-surface-variant', 'dark:text-on-surface-variant/70');
+            });
+        });
+    </script>
+</body></html>

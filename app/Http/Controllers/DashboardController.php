@@ -28,6 +28,8 @@ class DashboardController extends Controller
             'tanggal_kadaluarsa',
             'asc'
         )->take(5)->get();
+        
+        $pesananTerbaru = Pesanan::with('detailPesanans.obat')->latest()->take(5)->get();
 
         return view(
             'dashboard',
@@ -38,7 +40,8 @@ class DashboardController extends Controller
                 'totalPesanan',
                 'totalPembayaran',
                 'stokMenipis',
-                'obatKadaluarsa'
+                'obatKadaluarsa',
+                'pesananTerbaru'
             )
         );
     }

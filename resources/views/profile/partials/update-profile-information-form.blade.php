@@ -13,14 +13,41 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
+
+        <div>
+            <x-input-label for="foto_profil" :value="__('Foto Profil (Opsional, JPG/PNG)')" />
+            <div class="mt-2 flex items-center gap-4">
+                @if(file_exists(public_path('profiles/user_' . $user->id . '.jpg')))
+                    <img src="{{ asset('profiles/user_' . $user->id . '.jpg') }}?v={{ time() }}" alt="Profile Photo" class="w-16 h-16 rounded-full object-cover border-2 border-outline-variant">
+                @else
+                    <div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant border-2 border-outline-variant">
+                        <span class="material-symbols-outlined text-[32px]">person</span>
+                    </div>
+                @endif
+                <input id="foto_profil" name="foto_profil" type="file" accept="image/jpeg, image/png" class="block w-full text-sm text-on-surface-variant file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-container file:text-on-primary-container hover:file:bg-primary-container/80" />
+            </div>
+            <x-input-error class="mt-2" :messages="$errors->get('foto_profil')" />
+        </div>
 
         <div>
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
+        </div>
+
+        <div>
+            <x-input-label for="no_telp" :value="__('No. Telepon')" />
+            <x-text-input id="no_telp" name="no_telp" type="text" class="mt-1 block w-full" :value="old('no_telp', \App\Models\Pelanggan::where('email', $user->email)->first()->no_telp ?? '')" autocomplete="tel" />
+            <x-input-error class="mt-2" :messages="$errors->get('no_telp')" />
+        </div>
+
+        <div>
+            <x-input-label for="alamat" :value="__('Alamat Rumah')" />
+            <textarea id="alamat" name="alamat" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" rows="3">{{ old('alamat', \App\Models\Pelanggan::where('email', $user->email)->first()->alamat ?? '') }}</textarea>
+            <x-input-error class="mt-2" :messages="$errors->get('alamat')" />
         </div>
 
         <div>

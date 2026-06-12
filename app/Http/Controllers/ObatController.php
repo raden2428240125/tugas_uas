@@ -35,16 +35,18 @@ class ObatController extends Controller
      */
     public function store(Request $request)
     {
-        Obat::create([
-            'nama_obat' => $request->nama_obat,
-            'jenis_obat' => $request->jenis_obat,
-            'tanggal_kadaluarsa' => $request->tanggal_kadaluarsa,
-            'harga' => $request->harga,
-            'satuan' => $request->satuan,
-            'stok' => $request->stok,
-            'kategori_id' => $request->kategori_id,
-            'deskripsi' => $request->deskripsi
+        $validatedData = $request->validate([
+            'nama_obat' => 'required|string|max:255',
+            'jenis_obat' => 'required|string|max:255',
+            'tanggal_kadaluarsa' => 'required|date',
+            'harga' => 'required|numeric',
+            'satuan' => 'required|string|max:100',
+            'stok' => 'required|integer',
+            'kategori_id' => 'required|exists:kategoris,id',
+            'deskripsi' => 'nullable|string'
         ]);
+
+        Obat::create($validatedData);
 
         return redirect('/obat')
             ->with(
@@ -79,16 +81,18 @@ class ObatController extends Controller
      */
     public function update(Request $request, Obat $obat)
     {
-        $obat->update([
-            'nama_obat' => $request->nama_obat,
-            'jenis_obat' => $request->jenis_obat,
-            'tanggal_kadaluarsa' => $request->tanggal_kadaluarsa,
-            'harga' => $request->harga,
-            'satuan' => $request->satuan,
-            'stok' => $request->stok,
-            'kategori_id' => $request->kategori_id,
-            'deskripsi' => $request->deskripsi
+        $validatedData = $request->validate([
+            'nama_obat' => 'required|string|max:255',
+            'jenis_obat' => 'required|string|max:255',
+            'tanggal_kadaluarsa' => 'required|date',
+            'harga' => 'required|numeric',
+            'satuan' => 'required|string|max:100',
+            'stok' => 'required|integer',
+            'kategori_id' => 'required|exists:kategoris,id',
+            'deskripsi' => 'nullable|string'
         ]);
+
+        $obat->update($validatedData);
 
         return redirect('/obat')
             ->with('success', 'Data obat berhasil diupdate');
