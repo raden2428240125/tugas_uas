@@ -74,9 +74,7 @@
 
         <!-- Overlay for Register -->
         <div class="overlay-container">
-            <a href="/login" class="back-btn" title="Kembali ke Beranda">
-                <span class="material-symbols-outlined" style="font-size: 28px;">close</span>
-            </a>
+
             <h1>Hello, Friend!</h1>
             <p>Register with your personal details to use all of site features.</p>
             <a href="{{ route('register') }}" style="width: 100%; display: flex; justify-content: center; text-decoration: none;">

@@ -39,7 +39,7 @@
     <div class="auth-container">
         <!-- Overlay for Login -->
         <div class="overlay-container">
-            <a href="/login" class="back-btn" title="Kembali ke Beranda">
+            <a href="/" class="back-btn" title="Kembali ke Beranda">
                 <span class="material-symbols-outlined" style="font-size: 28px;">arrow_back</span>
             </a>
             <h1>Welcome Back!</h1>

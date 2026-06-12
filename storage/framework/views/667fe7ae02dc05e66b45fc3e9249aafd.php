@@ -39,7 +39,7 @@
     <div class="auth-container">
         <!-- Overlay for Login -->
         <div class="overlay-container">
-            <a href="/login" class="back-btn" title="Kembali ke Beranda">
+            <a href="/" class="back-btn" title="Kembali ke Beranda">
                 <span class="material-symbols-outlined" style="font-size: 28px;">arrow_back</span>
             </a>
             <h1>Welcome Back!</h1>
@@ -65,13 +65,32 @@
                 
                 <input type="text" name="name" placeholder="Nama Lengkap" value="<?php echo e(old('name')); ?>" required autofocus />
                 <input type="email" name="email" placeholder="Email" value="<?php echo e(old('email')); ?>" required />
-                <input type="password" name="password" placeholder="Password" required />
-                <input type="password" name="password_confirmation" placeholder="Konfirmasi Password" required />
+                <div style="position: relative; width: 100%;">
+                    <input type="password" name="password" id="password" placeholder="Password" required style="padding-right: 40px;" />
+                    <span class="material-symbols-outlined" onclick="togglePassword('password', this)" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #666; font-size: 20px;">visibility_off</span>
+                </div>
+                <div style="position: relative; width: 100%;">
+                    <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Konfirmasi Password" required style="padding-right: 40px;" />
+                    <span class="material-symbols-outlined" onclick="togglePassword('password_confirmation', this)" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #666; font-size: 20px;">visibility_off</span>
+                </div>
                 
                 <button type="submit">SIGN UP</button>
             </form>
         </div>
     </div>
+
+    <script>
+        function togglePassword(inputId, icon) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.textContent = 'visibility';
+            } else {
+                input.type = 'password';
+                icon.textContent = 'visibility_off';
+            }
+        }
+    </script>
 </body>
 </html>
 <?php /**PATH C:\Nada PAW1\tugas_uas\resources\views/auth/register.blade.php ENDPATH**/ ?>
