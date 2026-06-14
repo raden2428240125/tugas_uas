@@ -35,9 +35,21 @@ class SipaPesananController extends Controller
 
         $obat = \App\Models\Obat::findOrFail($request->obat_id);
         
+        $pelanggan = Pelanggan::where('email', auth()->user()->email ?? 'demo@example.com')->first();
+        if (!$pelanggan) {
+            $user = auth()->user();
+            $pelanggan = Pelanggan::create([
+                'nama' => $user->name ?? 'Pelanggan Demo',
+                'email' => $user->email ?? 'demo@example.com',
+                'password' => bcrypt('password'),
+                'no_telp' => '081234567890',
+                'alamat' => 'Alamat Default',
+            ]);
+        }
+
         // Buat pesanan baru
         $pesanan = Pesanan::create([
-            'pelanggan_id' => Pelanggan::first()->id ?? 1, // Gunakan pelanggan demo
+            'pelanggan_id' => $pelanggan->id,
             'tanggal_pesanan' => now(),
             'total_harga' => $obat->harga * $request->jumlah,
             'status' => 'Menunggu Pembayaran'

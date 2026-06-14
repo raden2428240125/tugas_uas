@@ -17,7 +17,7 @@
     <div class="flex items-center gap-6">
         <?php if(auth()->guard()->check()): ?>
         <a href="<?php echo e(url('/riwayat-pesanan')); ?>" class="material-symbols-outlined text-on-surface-variant hover:bg-primary-container/10 p-2 rounded-full transition-colors inline-block">notifications</a>
-        <a href="<?php echo e(url('/katalog')); ?>" class="material-symbols-outlined text-on-surface-variant hover:bg-primary-container/10 p-2 rounded-full transition-colors inline-block">shopping_cart</a>
+        <a href="<?php echo e(url('/riwayat-pesanan')); ?>" class="material-symbols-outlined text-on-surface-variant hover:bg-primary-container/10 p-2 rounded-full transition-colors inline-block" title="Pesanan Saya">shopping_cart</a>
         <?php endif; ?>
         <a href="<?php echo e(url('/lokasi-apotek')); ?>" class="material-symbols-outlined text-on-surface-variant hover:bg-primary-container/10 p-2 rounded-full transition-colors inline-block" title="Lokasi Apotek">location_on</a>
         <?php if(auth()->guard()->check()): ?>

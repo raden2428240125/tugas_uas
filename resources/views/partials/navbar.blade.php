@@ -17,7 +17,7 @@
     <div class="flex items-center gap-6">
         @auth
         <a href="{{ url('/riwayat-pesanan') }}" class="material-symbols-outlined text-on-surface-variant hover:bg-primary-container/10 p-2 rounded-full transition-colors inline-block">notifications</a>
-        <a href="{{ url('/katalog') }}" class="material-symbols-outlined text-on-surface-variant hover:bg-primary-container/10 p-2 rounded-full transition-colors inline-block">shopping_cart</a>
+        <a href="{{ url('/riwayat-pesanan') }}" class="material-symbols-outlined text-on-surface-variant hover:bg-primary-container/10 p-2 rounded-full transition-colors inline-block" title="Pesanan Saya">shopping_cart</a>
         @endauth
         <a href="{{ url('/lokasi-apotek') }}" class="material-symbols-outlined text-on-surface-variant hover:bg-primary-container/10 p-2 rounded-full transition-colors inline-block" title="Lokasi Apotek">location_on</a>
         @auth

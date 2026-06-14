@@ -32,8 +32,8 @@
 </label>
 @foreach($kategoris as $kategori)
 <label class="flex items-center gap-3 cursor-pointer group">
-<input type="radio" name="kategori_id" value="{{ $kategori->id }}" {{ request('kategori_id') == $kategori->id ? 'checked' : '' }} class="w-5 h-5 rounded-full border-outline-variant text-primary focus:ring-primary"/>
-<span class="text-body-md group-hover:text-primary transition-colors">{{ $kategori->nama_kategori }}</span>
+<input type="radio" name="kategori_id" value="{{ $kategori->id }}" {{ request('kategori_id') == $kategori->id ? 'checked' : '' }} class="w-5 h-5 rounded-full border-outline-variant text-primary focus:ring-primary shrink-0"/>
+<span class="text-body-md group-hover:text-primary transition-colors line-clamp-2" title="{{ $kategori->nama_kategori }}">{{ $kategori->nama_kategori }}</span>
 </label>
 @endforeach
 </div>
@@ -82,7 +82,7 @@
 <div class="relative h-56 w-full bg-surface-container overflow-hidden flex items-center justify-center">
     <span class="material-symbols-outlined text-primary text-[64px] opacity-30">medication</span>
     @if($obat->kategori)
-    <div class="absolute top-4 left-4 bg-secondary-container/90 backdrop-blur-sm text-on-secondary-container px-3 py-1 rounded-full text-label-sm font-label-sm">{{ $obat->kategori->nama_kategori }}</div>
+    <div class="absolute top-4 left-4 bg-secondary-container/90 backdrop-blur-sm text-on-secondary-container px-3 py-1 rounded-full text-label-sm font-label-sm max-w-[80%] truncate" title="{{ $obat->kategori->nama_kategori }}">{{ $obat->kategori->nama_kategori }}</div>
     @endif
     @if($obat->stok <= 0)
     <div class="absolute inset-0 bg-surface/40 backdrop-grayscale flex items-center justify-center">
