@@ -48,7 +48,7 @@ class SipaProfilController extends Controller
             $preferences = json_decode(file_get_contents($prefsFile), true);
         }
 
-        return view('profil', compact('pelanggan', 'totalResepAktif', 'totalPesanan', 'preferences'));
+        return view('user.profil', compact('pelanggan', 'totalResepAktif', 'totalPesanan', 'preferences'));
     }
 
     public function updatePreferences(Request $request)
@@ -100,3 +100,5 @@ class SipaProfilController extends Controller
         return redirect()->back()->with('success', 'Alamat berhasil diperbarui!');
     }
 }
+
+

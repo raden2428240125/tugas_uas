@@ -12,14 +12,14 @@ class ResepController extends Controller
     {
         $resep = Resep::with('pelanggan')->get();
 
-        return view('resep.index', compact('resep'));
+        return view('admin.resep.index', compact('resep'));
     }
 
     public function create()
     {
         $pelanggan = Pelanggan::all();
 
-        return view('resep.create', compact('pelanggan'));
+        return view('admin.resep.create', compact('pelanggan'));
     }
 
     public function store(Request $request)
@@ -31,7 +31,7 @@ class ResepController extends Controller
             'catatan' => $request->catatan
         ]);
 
-        return redirect('/resep')->with('success', 'Data resep berhasil ditambahkan');
+        return redirect('/admin/resep')->with('success', 'Data resep berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -41,7 +41,7 @@ class ResepController extends Controller
         $pelanggan = Pelanggan::all();
 
         return view(
-            'resep.edit',
+            'admin.resep.edit',
             compact(
                 'resep',
                 'pelanggan'
@@ -60,7 +60,7 @@ class ResepController extends Controller
             'catatan' => $request->catatan
         ]);
 
-        return redirect('/resep')->with('success', 'Data resep berhasil diupdate');
+        return redirect('/admin/resep')->with('success', 'Data resep berhasil diupdate');
     }
 
     public function destroy($id)
@@ -69,6 +69,8 @@ class ResepController extends Controller
 
         $resep->delete();
 
-        return redirect('/resep')->with('success', 'Data resep berhasil dihapus');
+        return redirect('/admin/resep')->with('success', 'Data resep berhasil dihapus');
     }
 }
+
+

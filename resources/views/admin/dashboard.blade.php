@@ -14,7 +14,7 @@
         <!-- Total Obat -->
         <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box border shadow-sm rounded">
-                <span class="info-box-icon bg-info text-white elevation-1"><i class="bi bi-capsule"></i></span>
+                <span class="info-box-icon border border-primary text-primary bg-light elevation-1"><i class="bi bi-capsule"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Total Obat</span>
                     <span class="info-box-number fs-4">{{ $totalObat }}</span>
@@ -25,7 +25,7 @@
         <!-- Total Kategori -->
         <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box border shadow-sm rounded">
-                <span class="info-box-icon bg-success text-white elevation-1"><i class="bi bi-tags"></i></span>
+                <span class="info-box-icon border border-primary text-primary bg-light elevation-1"><i class="bi bi-tags"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Kategori Obat</span>
                     <span class="info-box-number fs-4">{{ $totalKategori }}</span>
@@ -36,7 +36,7 @@
         <!-- Total Pesanan -->
         <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box border shadow-sm rounded">
-                <span class="info-box-icon bg-warning text-white elevation-1"><i class="bi bi-cart"></i></span>
+                <span class="info-box-icon border border-primary text-primary bg-light elevation-1"><i class="bi bi-cart"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Total Pesanan</span>
                     <span class="info-box-number fs-4">{{ $totalPesanan }}</span>
@@ -47,7 +47,7 @@
         <!-- Total Pelanggan -->
         <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box border shadow-sm rounded">
-                <span class="info-box-icon bg-primary text-white elevation-1"><i class="bi bi-people"></i></span>
+                <span class="info-box-icon border border-primary text-primary bg-light elevation-1"><i class="bi bi-people"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Pelanggan Aktif</span>
                     <span class="info-box-number fs-4">{{ $totalPelanggan }}</span>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="card-body p-0 table-responsive">
                     <table class="table table-hover table-striped m-0">
-                        <thead class="table-light">
+                        <thead class="table-light text-primary">
                             <tr>
                                 <th>ID</th>
                                 <th>Pelanggan</th>
@@ -77,16 +77,16 @@
                         <tbody>
                             @forelse($recentOrders as $order)
                             <tr>
-                                <td><a href="/pesanan/{{ $order->id }}">#ORD-{{ $order->id }}</a></td>
+                                <td><a href="/admin/pesanan/{{ $order->id }}" class="text-primary fw-bold">#ORD-{{ $order->id }}</a></td>
                                 <td>{{ $order->pelanggan->nama ?? 'Umum' }}</td>
                                 <td>{{ \Carbon\Carbon::parse($order->tanggal_pesanan)->format('d M Y, H:i') }}</td>
                                 <td>
                                     @if($order->status == 'selesai')
-                                        <span class="badge bg-success">Selesai</span>
+                                        <span class="badge bg-primary text-white">Selesai</span>
                                     @elseif($order->status == 'proses')
-                                        <span class="badge bg-warning">Proses</span>
+                                        <span class="badge bg-primary bg-opacity-75">Proses</span>
                                     @else
-                                        <span class="badge bg-secondary">{{ ucfirst($order->status) }}</span>
+                                        <span class="badge border border-primary text-primary">{{ ucfirst($order->status) }}</span>
                                     @endif
                                 </td>
                                 <td>Rp {{ number_format($order->total_harga, 0, ',', '.') }}</td>
@@ -100,7 +100,7 @@
                     </table>
                 </div>
                 <div class="card-footer bg-white text-center">
-                    <a href="/pesanan" class="text-decoration-none text-primary fw-bold">Lihat Semua Pesanan</a>
+                    <a href="/admin/pesanan" class="text-decoration-none text-primary fw-bold">Lihat Semua Pesanan</a>
                 </div>
             </div>
         </div>
@@ -113,10 +113,10 @@
                 </div>
                 <div class="card-body">
                     <div class="d-grid gap-2">
-                        <a href="/obat/create" class="btn btn-outline-primary text-start"><i class="bi bi-plus-circle me-2"></i>Tambah Data Obat</a>
-                        <a href="/kategori/create" class="btn btn-outline-success text-start"><i class="bi bi-tags me-2"></i>Tambah Kategori</a>
-                        <a href="/pesanan" class="btn btn-outline-warning text-start"><i class="bi bi-cart-check me-2"></i>Kelola Pesanan Masuk</a>
-                        <a href="/resep" class="btn btn-outline-info text-start"><i class="bi bi-file-medical me-2"></i>Validasi Resep Dokter</a>
+                        <a href="/admin/obat/create" class="btn btn-primary text-start"><i class="bi bi-plus-circle me-2"></i>Tambah Data Obat</a>
+                        <a href="/admin/kategori/create" class="btn btn-outline-primary text-start"><i class="bi bi-tags me-2"></i>Tambah Kategori</a>
+                        <a href="/admin/pesanan" class="btn btn-outline-primary text-start"><i class="bi bi-cart-check me-2"></i>Kelola Pesanan Masuk</a>
+                        <a href="/admin/resep" class="btn btn-outline-primary text-start"><i class="bi bi-file-medical me-2"></i>Validasi Resep Dokter</a>
                     </div>
                 </div>
             </div>
@@ -124,3 +124,4 @@
     </div>
 </div>
 @endsection
+

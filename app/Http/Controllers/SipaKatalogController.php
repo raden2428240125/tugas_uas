@@ -48,6 +48,8 @@ class SipaKatalogController extends Controller
 
         $obats = $query->paginate(9);
 
-        return view('katalog', compact('obats', 'kategoris'));
+        return view('user.katalog', compact('obats', 'kategoris'));
     }
 }
+
+

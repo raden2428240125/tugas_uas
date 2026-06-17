@@ -11,26 +11,26 @@ class PelangganController extends Controller
     {
         $pelanggan = Pelanggan::all();
 
-        return view('pelanggan.index', compact('pelanggan'));
+        return view('admin.pelanggan.index', compact('pelanggan'));
     }
 
     public function create()
     {
-        return view('pelanggan.create');
+        return view('admin.pelanggan.create');
     }
 
     public function store(Request $request)
     {
         Pelanggan::create($request->all());
 
-        return redirect('/pelanggan')->with('success', 'Data pelanggan berhasil ditambahkan');
+        return redirect('/admin/pelanggan')->with('success', 'Data pelanggan berhasil ditambahkan');
     }
 
     public function edit($id)
     {
         $pelanggan = Pelanggan::findOrFail($id);
 
-        return view('pelanggan.edit', compact('pelanggan'))->with('success', 'Data pelanggan berhasil diedit');
+        return view('admin.pelanggan.edit', compact('pelanggan'))->with('success', 'Data pelanggan berhasil diedit');
     }
 
     public function update(Request $request, $id)
@@ -39,7 +39,7 @@ class PelangganController extends Controller
 
         $pelanggan->update($request->all());
 
-        return redirect('/pelanggan')->with('success', 'Data pelanggan berhasil diupdate');
+        return redirect('/admin/pelanggan')->with('success', 'Data pelanggan berhasil diupdate');
     }
 
     public function destroy($id)
@@ -48,7 +48,9 @@ class PelangganController extends Controller
 
         $pelanggan->delete();
 
-        return redirect('/pelanggan')->with('success', 'Data pelanggan berhasil dihapus');
+        return redirect('/admin/pelanggan')->with('success', 'Data pelanggan berhasil dihapus');
     }
 }
+
+
 

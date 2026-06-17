@@ -17,7 +17,7 @@ class PesananController extends Controller
         ])->get();
 
         return view(
-            'pesanan.index',
+            'admin.pesanan.index',
             compact('pesanan')
         );
     }
@@ -29,7 +29,7 @@ class PesananController extends Controller
         $resep = Resep::all();
 
         return view(
-            'pesanan.create',
+            'admin.pesanan.create',
             compact(
                 'pelanggan',
                 'resep'
@@ -52,7 +52,7 @@ class PesananController extends Controller
 
         ]);
 
-        return redirect('/pesanan')->with('success', 'Data pesanan berhasil ditambahkan');
+        return redirect('/admin/pesanan')->with('success', 'Data pesanan berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -64,7 +64,7 @@ class PesananController extends Controller
         $resep = Resep::all();
 
         return view(
-            'pesanan.edit',
+            'admin.pesanan.edit',
             compact(
                 'pesanan',
                 'pelanggan',
@@ -91,7 +91,7 @@ class PesananController extends Controller
 
         ]);
 
-        return redirect('/pesanan')->with('success', 'Data pesanan berhasil diupdate');
+        return redirect('/admin/pesanan')->with('success', 'Data pesanan berhasil diupdate');
     }
 
     public function destroy($id)
@@ -100,6 +100,8 @@ class PesananController extends Controller
 
         $pesanan->delete();
 
-        return redirect('/pesanan')->with('success', 'Data pesanan berhasil dihapus');
+        return redirect('/admin/pesanan')->with('success', 'Data pesanan berhasil dihapus');
     }
 }
+
+

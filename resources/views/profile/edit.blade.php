@@ -40,21 +40,21 @@
     /* Override Breeze components styling to match SIPA theme */
     input[type="text"], input[type="email"], input[type="password"] {
         border-radius: 0.75rem !important;
-        border-color: #ccc3d8 !important;
+        border-color: #cbd5e1 !important;
         padding: 0.75rem 1rem !important;
         box-shadow: none !important;
-        background-color: #fcf8ff !important;
+        background-color: #ffffff !important;
     }
     input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
-        border-color: #630ed4 !important;
-        --tw-ring-color: rgba(99, 14, 212, 0.2) !important;
+        border-color: var(--color-primary) !important;
+        --tw-ring-color: rgba(22, 163, 74, 0.2) !important;
     }
-    .text-gray-900 { color: #181445 !important; }
-    .text-gray-600 { color: #4a4455 !important; }
+    .text-gray-900 { color: #0f172a !important; }
+    .text-gray-600 { color: #334155 !important; }
     
     /* Buttons */
     button[type="submit"], .inline-flex.items-center.px-4.py-2.bg-gray-800 {
-        background-color: #630ed4 !important;
+        background-color: var(--color-primary) !important;
         color: white !important;
         border-radius: 0.75rem !important;
         font-weight: 700 !important;
@@ -63,14 +63,14 @@
         letter-spacing: normal !important;
     }
     button[type="submit"]:hover, .inline-flex.items-center.px-4.py-2.bg-gray-800:hover {
-        background-color: #7c3aed !important;
+        background-color: var(--color-primary) !important;
     }
     .bg-red-600 {
-        background-color: #ba1a1a !important;
+        background-color: #dc2626 !important;
         border-radius: 0.75rem !important;
     }
     .bg-red-600:hover {
-        background-color: #93000a !important;
+        background-color: #7f1d1d !important;
     }
 </style>
 @endsection

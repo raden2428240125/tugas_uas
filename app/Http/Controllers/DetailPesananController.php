@@ -17,7 +17,7 @@ class DetailPesananController extends Controller
         ])->get();
 
         return view(
-            'detail-pesanan.index',
+            'admin.detail-pesanan.index',
             compact('detailPesanans')
         );
     }
@@ -28,7 +28,7 @@ class DetailPesananController extends Controller
         $obats = Obat::all();
 
         return view(
-            'detail-pesanan.create',
+            'admin.detail-pesanan.create',
             compact(
                 'pesanans',
                 'obats'
@@ -54,7 +54,7 @@ class DetailPesananController extends Controller
         ]);
 
         return redirect()
-            ->route('detail-pesanan.index');
+            ->route('admin.detail-pesanan.index');
     }
 
     public function show(DetailPesanan $detailPesanan)
@@ -68,7 +68,7 @@ class DetailPesananController extends Controller
         $obats = Obat::all();
 
         return view(
-            'detail-pesanan.edit',
+            'admin.detail-pesanan.edit',
             compact(
                 'detailPesanan',
                 'pesanans',
@@ -97,7 +97,7 @@ class DetailPesananController extends Controller
         ]);
 
         return redirect()
-            ->route('detail-pesanan.index');
+            ->route('admin.detail-pesanan.index');
     }
 
     public function destroy(
@@ -106,6 +106,8 @@ class DetailPesananController extends Controller
         $detailPesanan->delete();
 
         return redirect()
-            ->route('detail-pesanan.index');
+            ->route('admin.detail-pesanan.index');
     }
 }
+
+

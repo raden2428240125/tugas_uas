@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+        --color-primary: theme("colors.primary");
+        --color-on-primary-fixed-variant: theme(
+            "colors.on-primary-fixed-variant"
+        );
+        --color-primary-hover: theme("colors.on-primary-fixed-variant");
+        --color-primary-40: theme("colors.primary / 40%");
+        --color-primary-12: theme("colors.primary / 12%");
+        --color-primary-20: theme("colors.primary / 20%");
+        --color-primary-30: theme("colors.primary / 30%");
+        --color-primary-40-shadow: theme("colors.primary / 40%");
+    }
+}

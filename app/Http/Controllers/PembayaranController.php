@@ -13,7 +13,7 @@ class PembayaranController extends Controller
         $pembayaran = Pembayaran::with('pesanan')->get();
 
         return view(
-            'pembayaran.index',
+            'admin.pembayaran.index',
             compact('pembayaran')
         );
     }
@@ -23,7 +23,7 @@ class PembayaranController extends Controller
         $pesanan = Pesanan::all();
 
         return view(
-            'pembayaran.create',
+            'admin.pembayaran.create',
             compact('pesanan')
         );
     }
@@ -44,7 +44,7 @@ class PembayaranController extends Controller
 
         ]);
 
-        return redirect('/pembayaran')->with('success', 'Data pembayaran berhasil ditambahkan');
+        return redirect('/admin/pembayaran')->with('success', 'Data pembayaran berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -54,7 +54,7 @@ class PembayaranController extends Controller
         $pesanan = Pesanan::all();
 
         return view(
-            'pembayaran.edit',
+            'admin.pembayaran.edit',
             compact(
                 'pembayaran',
                 'pesanan'
@@ -79,7 +79,7 @@ class PembayaranController extends Controller
 
         ]);
 
-        return redirect('/pembayaran')->with('success', 'Data pembayaran berhasil diupdate');
+        return redirect('/admin/pembayaran')->with('success', 'Data pembayaran berhasil diupdate');
     }
 
     public function destroy($id)
@@ -88,6 +88,8 @@ class PembayaranController extends Controller
 
         $pembayaran->delete();
 
-        return redirect('/pembayaran')->with('success', 'Data pembayaran berhasil dihapus') ;
+        return redirect('/admin/pembayaran')->with('success', 'Data pembayaran berhasil dihapus') ;
     }
 }
+
+

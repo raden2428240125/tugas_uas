@@ -13,7 +13,7 @@ class KategoriController extends Controller
     public function index()
     {
         $kategoris = Kategori::all();
-        return view('kategori.index', compact('kategoris'));
+        return view('admin.kategori.index', compact('kategoris'));
     }
 
     /**
@@ -21,7 +21,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('kategori.create')->with('success', 'Data kategori berhasil ditambahkan');
+        return view('admin.kategori.create')->with('success', 'Data kategori berhasil ditambahkan');
     }
 
     /**
@@ -35,7 +35,7 @@ class KategoriController extends Controller
             'nama_kategori' => $request->nama_kategori,
         ]);
 
-        return redirect('/kategori')->with('success', 'Data kategori berhasil ditambahkan');
+        return redirect('/admin/kategori')->with('success', 'Data kategori berhasil ditambahkan');
     }
 
     /**
@@ -51,7 +51,7 @@ class KategoriController extends Controller
      */
     public function edit(Kategori $kategori)
     {
-        return view('kategori.edit', compact('kategori'))->with('success', 'Data kategori berhasil diedit');
+        return view('admin.kategori.edit', compact('kategori'))->with('success', 'Data kategori berhasil diedit');
     }
 
     /**
@@ -63,7 +63,7 @@ class KategoriController extends Controller
             'nama_kategori' => $request->nama_kategori,
         ]);
 
-        return redirect('/kategori')->with('success', 'Data kategori berhasil diupdate');
+        return redirect('/admin/kategori')->with('success', 'Data kategori berhasil diupdate');
     }
 
     /**
@@ -72,6 +72,8 @@ class KategoriController extends Controller
     public function destroy(Kategori $kategori)
     {
         $kategori->delete();
-        return redirect('/kategori');
+        return redirect('/admin/kategori');
     }
 }
+
+

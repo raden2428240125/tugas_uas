@@ -10,20 +10,28 @@ class SipaPesananController extends Controller
 {
     public function index()
     {
-        // Ambil semua pesanan beserta relasi
+        // Cari pelanggan berdasarkan user yang login
+        $user = auth()->user();
+        $pelanggan = \App\Models\Pelanggan::where('email', $user->email)->first();
+        $pelangganId = $pelanggan ? $pelanggan->id : 0;
+
+        // Ambil pesanan aktif milik user ini
         $pesananAktif = Pesanan::with(['pelanggan', 'detailPesanans.obat', 'pembayaran'])
+            ->where('pelanggan_id', $pelangganId)
             ->whereIn('status', ['Menunggu Pembayaran', 'Diproses', 'Siap Diambil'])
             ->latest()
             ->first();
 
+        // Ambil riwayat pesanan selesai milik user ini
         $pesananSelesai = Pesanan::with(['pelanggan', 'detailPesanans.obat', 'pembayaran'])
+            ->where('pelanggan_id', $pelangganId)
             ->whereIn('status', ['Selesai', 'Dibatalkan'])
             ->latest()
             ->paginate(5);
 
-        $totalPesanan = Pesanan::count();
+        $totalPesanan = Pesanan::where('pelanggan_id', $pelangganId)->count();
 
-        return view('riwayat-pesanan', compact('pesananAktif', 'pesananSelesai', 'totalPesanan'));
+        return view('user.riwayat-pesanan', compact('pesananAktif', 'pesananSelesai', 'totalPesanan'));
     }
 
     public function beliLangsung(Request $request)
@@ -68,6 +76,8 @@ class SipaPesananController extends Controller
             $obat->decrement('stok', $request->jumlah);
         }
 
-        return redirect()->route('riwayat-pesanan')->with('success', 'Pesanan berhasil dibuat!');
+        return redirect()->route('user.riwayat-pesanan')->with('success', 'Pesanan berhasil dibuat!');
     }
 }
+
+

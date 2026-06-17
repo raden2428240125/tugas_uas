@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 // =============================================
 // ADMIN CRUD ROUTES (behind auth)
 // =============================================
-Route::middleware(['auth', 'is_admin'])->group(function () {
-    Route::get('/admin/dashboard', [\App\Http\Controllers\AdminDashboardController::class, 'index'])->name('admin.dashboard');
+Route::middleware(['auth', 'is_admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', [\App\Http\Controllers\AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('kategori', KategoriController::class);
     Route::resource('obat', ObatController::class);
     Route::resource('pelanggan', PelangganController::class);
@@ -28,6 +28,7 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::resource('detail-pesanan', DetailPesananController::class);
     Route::resource('pembayaran', PembayaranController::class);
     Route::resource('resep', ResepController::class);
+    Route::resource('users', \App\Http\Controllers\UserController::class);
 });
 
 // =============================================
@@ -41,21 +42,23 @@ Route::get('/', [HomeController::class, 'index'])->name('login');
 Route::get('/katalog', [SipaKatalogController::class, 'index'])->name('katalog');
 
 // Upload Resep - form + store
-Route::get('/upload-resep', [SipaResepController::class, 'create'])->name('upload-resep');
-Route::post('/upload-resep', [SipaResepController::class, 'store'])->name('upload-resep.store');
+Route::middleware('auth')->group(function () {
+    Route::get('/upload-resep', [SipaResepController::class, 'create'])->name('upload-resep');
+    Route::post('/upload-resep', [SipaResepController::class, 'store'])->name('upload-resep.store');
 
-// Riwayat Pesanan - shows pesanan data from DB
-Route::get('/riwayat-pesanan', [SipaPesananController::class, 'index'])->name('riwayat-pesanan');
-Route::post('/beli-langsung', [SipaPesananController::class, 'beliLangsung'])->name('beli-langsung');
+    // Riwayat Pesanan - shows pesanan data from DB
+    Route::get('/riwayat-pesanan', [SipaPesananController::class, 'index'])->name('riwayat-pesanan');
+    Route::post('/beli-langsung', [SipaPesananController::class, 'beliLangsung'])->name('beli-langsung');
 
-// Profil Pengguna - shows pelanggan data
-Route::get('/profil', [SipaProfilController::class, 'index'])->name('profil');
-Route::post('/profil/preferences', [SipaProfilController::class, 'updatePreferences'])->name('profil.preferences');
-Route::post('/profil/alamat', [SipaProfilController::class, 'updateAlamat'])->name('profil.alamat');
+    // Profil Pengguna - shows pelanggan data
+    Route::get('/profil', [SipaProfilController::class, 'index'])->name('profil');
+    Route::post('/profil/preferences', [SipaProfilController::class, 'updatePreferences'])->name('profil.preferences');
+    Route::post('/profil/alamat', [SipaProfilController::class, 'updateAlamat'])->name('profil.alamat');
+});
 
 // Lokasi Apotek (static page)
 Route::get('/lokasi-apotek', function () {
-    return view('lokasi-apotek');
+    return view('user.lokasi-apotek');
 })->name('lokasi-apotek');
 
 // Dashboard (admin) - already connected
@@ -71,3 +74,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+

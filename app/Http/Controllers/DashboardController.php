@@ -32,7 +32,7 @@ class DashboardController extends Controller
         $pesananTerbaru = Pesanan::with('detailPesanans.obat')->latest()->take(5)->get();
 
         return view(
-            'dashboard',
+            'user.dashboard',
             compact(
                 'totalObat',
                 'totalPelanggan',
@@ -46,3 +46,5 @@ class DashboardController extends Controller
         );
     }
 }
+
+

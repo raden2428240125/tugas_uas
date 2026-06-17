@@ -10,7 +10,7 @@ class SipaResepController extends Controller
 {
     public function create()
     {
-        return view('upload-resep');
+        return view('user.upload-resep');
     }
 
     public function store(Request $request)
@@ -23,17 +23,18 @@ class SipaResepController extends Controller
         // Simpan file resep
         $filePath = $request->file('file_resep')->store('resep', 'public');
 
-        // Cari atau buat pelanggan (gunakan pelanggan pertama sebagai demo)
-        $pelanggan = Pelanggan::first();
+        // Cari pelanggan berdasarkan user yang login
+        $user = auth()->user();
+        $pelanggan = Pelanggan::where('email', $user->email)->first();
 
         if (!$pelanggan) {
-            // Jika tidak ada pelanggan, buat satu sebagai demo
+            // Jika belum ada di tabel pelanggan, buat otomatis
             $pelanggan = Pelanggan::create([
-                'nama' => 'Pelanggan Demo',
-                'email' => 'demo@sipa.co.id',
-                'password' => bcrypt('password'),
-                'no_telp' => '081234567890',
-                'alamat' => 'Jakarta Selatan',
+                'nama' => $user->name,
+                'email' => $user->email,
+                'password' => $user->password,
+                'no_telp' => '-',
+                'alamat' => 'Belum ada alamat',
             ]);
         }
 
@@ -44,6 +45,8 @@ class SipaResepController extends Controller
             'catatan' => $request->catatan,
         ]);
 
-        return redirect()->route('upload-resep')->with('success', 'Resep berhasil diunggah! Tim apoteker kami akan memverifikasi dalam 15-30 menit.');
+        return redirect()->route('user.upload-resep')->with('success', 'Resep berhasil diunggah! Tim apoteker kami akan memverifikasi dalam 15-30 menit.');
     }
 }
+
+

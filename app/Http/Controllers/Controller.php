@@ -7,3 +7,5 @@ abstract class Controller
     //aku cantik
     //aman banget
 }
+
+

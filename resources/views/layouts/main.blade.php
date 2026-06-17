@@ -12,6 +12,41 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@4.0.0-beta3/dist/css/adminlte.min.css">
+
+    <style>
+        :root {
+            /* M3 Blue 600 - Main Primary */
+            --bs-primary: #2563eb;
+            --bs-primary-rgb: 37, 99, 235;
+
+            /* Slate 900 - Deep dark blue for sidebar */
+            --bs-dark: #0f172a;
+            --bs-dark-rgb: 15, 23, 42;
+
+            /* Blue 400 - Secondary accents */
+            --bs-info: #60a5fa;
+            --bs-info-rgb: 96, 165, 250;
+
+            /* Blue 800 - Darker accents */
+            --bs-success: #1e40af;
+            --bs-success-rgb: 30, 64, 175;
+
+            /* Blue 300 - Light accents */
+            --bs-warning: #93c5fd;
+            --bs-warning-rgb: 147, 197, 253;
+        }
+
+        /* Ensure sidebar brand links play nicely with dark theme */
+        .app-sidebar .brand-link {
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff !important;
+        }
+
+        .app-sidebar .nav-link.active {
+            background-color: #2563eb !important;
+            color: #ffffff !important;
+        }
+    </style>
 </head>
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
@@ -91,7 +126,7 @@
                                 <p>Dashboard</p>
 
                             </a>
-                            
+
                         </li>
 
                         <li class="nav-item">
@@ -114,7 +149,7 @@
 
                                 <li class="nav-item">
 
-                                    <a href="/kategori" class="nav-link">
+                                    <a href="/admin/kategori" class="nav-link">
 
                                         <i class="bi bi-circle"></i>
 
@@ -126,7 +161,7 @@
 
                                 <li class="nav-item">
 
-                                    <a href="/obat" class="nav-link">
+                                    <a href="/admin/obat" class="nav-link">
 
                                         <i class="bi bi-circle"></i>
 
@@ -138,11 +173,23 @@
 
                                 <li class="nav-item">
 
-                                    <a href="/pelanggan" class="nav-link">
+                                    <a href="/admin/pelanggan" class="nav-link">
 
                                         <i class="bi bi-circle"></i>
 
                                         <p>Pelanggan</p>
+
+                                    </a>
+
+                                </li>
+
+                                <li class="nav-item">
+
+                                    <a href="/admin/users" class="nav-link">
+
+                                        <i class="bi bi-circle"></i>
+
+                                        <p>Pengguna / Admin</p>
 
                                     </a>
 
@@ -173,7 +220,7 @@
 
                                 <li class="nav-item">
 
-                                    <a href="/pesanan" class="nav-link">
+                                    <a href="/admin/pesanan" class="nav-link">
 
                                         <i class="bi bi-circle"></i>
 
@@ -185,7 +232,7 @@
 
                                 <li class="nav-item">
 
-                                    <a href="/detail-pesanan" class="nav-link">
+                                    <a href="/admin/detail-pesanan" class="nav-link">
 
                                         <i class="bi bi-circle"></i>
 
@@ -197,7 +244,7 @@
 
                                 <li class="nav-item">
 
-                                    <a href="/pembayaran" class="nav-link">
+                                    <a href="/admin/pembayaran" class="nav-link">
 
                                         <i class="bi bi-circle"></i>
 
@@ -213,7 +260,7 @@
 
                         <li class="nav-item">
 
-                            <a href="/resep" class="nav-link">
+                            <a href="/admin/resep" class="nav-link">
 
                                 <i class="nav-icon bi bi-file-earmark-medical"></i>
 
@@ -227,9 +274,10 @@
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 
-                                <button type="submit" class="nav-link btn btn-link text-start text-white">
+                                <button type="submit"
+                                    class="nav-link text-start bg-danger hover:bg-danger/80 border-0 text-white w-100 d-flex align-items-center">
                                     <i class="nav-icon bi bi-box-arrow-right"></i>
-                                    <p>Logout</p>
+                                    <p class="mb-0">Logout</p>
                                 </button>
                             </form>
                         </li>
