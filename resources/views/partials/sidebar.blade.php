@@ -69,7 +69,7 @@
         <div class="absolute -right-4 -top-4 w-16 h-16 bg-white/20 rounded-full blur-xl"></div>
         <span class="material-symbols-outlined text-[32px] mb-3 text-primary">support_agent</span>
         <p class="font-label-md text-[14px] font-bold mb-3">Butuh Bantuan Medis?</p>
-        <a href="mailto:support@sipa.com"
+        <a href="https://wa.me/6281234567890?text=Halo%20SIPA,%20saya%20butuh%20bantuan%20medis." target="_blank"
             class="w-full bg-white text-primary py-2.5 rounded-xl font-bold hover:shadow-md transition-all flex justify-center items-center gap-2 text-[13px]">
             <span>Hubungi Kami</span>
         </a>
