@@ -12,15 +12,12 @@ use App\Models\Pembayaran;
 use App\Models\Resep;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Faker\Factory as Faker;
 use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        $faker = Faker::create('id_ID');
-
         // ─── 1. Admin User ───────────────────────────────────────────────
         if (!User::where('email', 'admin@sipa.com')->exists()) {
             User::factory()->create([
@@ -47,17 +44,18 @@ class DatabaseSeeder extends Seeder
         // ─── 3. Obat (25 records) ────────────────────────────────────────
         $jenisList  = ['Tablet', 'Kapsul', 'Sirup', 'Salep', 'Injeksi', 'Puyer'];
         $satuanList = ['Strip', 'Botol', 'Tube', 'Pcs', 'Papan', 'Box'];
+        $kataObat   = ['Panadol', 'Bodrex', 'Paramex', 'Sanmol', 'Oskadon', 'Promag', 'Mylanta'];
         $obatIds    = [];
         for ($i = 0; $i < 25; $i++) {
             $obat = Obat::create([
-                'nama_obat'         => $faker->word() . ' ' . $faker->word() . ' ' . $faker->numberBetween(10, 500) . 'mg',
-                'jenis_obat'        => $faker->randomElement($jenisList),
-                'satuan'            => $faker->randomElement($satuanList),
-                'kategori_id'       => $faker->randomElement($kategoriIds),
-                'deskripsi'         => $faker->sentence(10),
-                'harga'             => $faker->numberBetween(5, 150) * 1000,
-                'stok'              => $faker->numberBetween(5, 200),
-                'tanggal_kadaluarsa'=> Carbon::now()->addDays($faker->numberBetween(30, 700))->format('Y-m-d'),
+                'nama_obat'         => $kataObat[array_rand($kataObat)] . ' ' . rand(10, 500) . 'mg',
+                'jenis_obat'        => $jenisList[array_rand($jenisList)],
+                'satuan'            => $satuanList[array_rand($satuanList)],
+                'kategori_id'       => $kategoriIds[array_rand($kategoriIds)],
+                'deskripsi'         => 'Obat berkhasiat tinggi untuk mengatasi berbagai macam penyakit secara efektif.',
+                'harga'             => rand(5, 150) * 1000,
+                'stok'              => rand(5, 200),
+                'tanggal_kadaluarsa'=> Carbon::now()->addDays(rand(30, 700))->format('Y-m-d'),
             ]);
             $obatIds[] = $obat->id;
         }
@@ -66,23 +64,24 @@ class DatabaseSeeder extends Seeder
         $pelangganIds = [];
         for ($i = 0; $i < 15; $i++) {
             $pelanggan = Pelanggan::create([
-                'nama'    => $faker->name,
-                'email'   => $faker->unique()->safeEmail,
+                'nama'    => 'Pelanggan ' . ($i + 1),
+                'email'   => 'pelanggan' . ($i + 1) . '@example.com',
                 'password'=> Hash::make('password'),
-                'no_telp' => $faker->numerify('08##########'),
-                'alamat'  => $faker->address,
+                'no_telp' => '0812' . rand(10000000, 99999999),
+                'alamat'  => 'Jl. Sudirman No. ' . rand(1, 100) . ', Palembang',
             ]);
             $pelangganIds[] = $pelanggan->id;
         }
 
         // ─── 5. Resep (15 records) ────────────────────────────────────────
         $resepIds = [];
+        $statusResep = ['Menunggu Verifikasi', 'Disetujui', 'Ditolak'];
         foreach ($pelangganIds as $pId) {
             $resep = Resep::create([
                 'pelanggan_id' => $pId,
                 'file_resep'   => 'resep/default.jpg',
-                'status'       => $faker->randomElement(['Menunggu Verifikasi', 'Disetujui', 'Ditolak']),
-                'catatan'      => 'Resep dokter: ' . $faker->word() . ' untuk keluhan ' . $faker->word(),
+                'status'       => $statusResep[array_rand($statusResep)],
+                'catatan'      => 'Resep dokter spesialis nomor ' . rand(100, 999),
             ]);
             $resepIds[] = $resep->id;
         }
@@ -92,11 +91,11 @@ class DatabaseSeeder extends Seeder
         $metodeBayar   = ['QRIS', 'Transfer Bank', 'E-Wallet', 'COD'];
 
         for ($i = 0; $i < 15; $i++) {
-            $pesananStatus = $faker->randomElement($statusOptions);
-            $tglPesanan    = Carbon::now()->subDays($faker->numberBetween(1, 60))->format('Y-m-d');
+            $pesananStatus = $statusOptions[array_rand($statusOptions)];
+            $tglPesanan    = Carbon::now()->subDays(rand(1, 60))->format('Y-m-d');
 
             $pesanan = Pesanan::create([
-                'pelanggan_id'    => $faker->randomElement($pelangganIds),
+                'pelanggan_id'    => $pelangganIds[array_rand($pelangganIds)],
                 'resep_id'        => null,
                 'tanggal_pesanan' => $tglPesanan,
                 'total_harga'     => 0,
@@ -105,10 +104,10 @@ class DatabaseSeeder extends Seeder
 
             // 1–3 detail items per pesanan
             $total = 0;
-            $numItems = $faker->numberBetween(1, 3);
+            $numItems = rand(1, 3);
             for ($d = 0; $d < $numItems; $d++) {
-                $obat    = Obat::find($faker->randomElement($obatIds));
-                $jumlah  = $faker->numberBetween(1, 5);
+                $obat    = Obat::find($obatIds[array_rand($obatIds)]);
+                $jumlah  = rand(1, 5);
                 $subtotal = $obat->harga * $jumlah;
 
                 DetailPesanan::create([
@@ -126,7 +125,7 @@ class DatabaseSeeder extends Seeder
             if (!in_array($pesananStatus, ['Menunggu Pembayaran', 'Dibatalkan'])) {
                 Pembayaran::create([
                     'pesanan_id'        => $pesanan->id,
-                    'metode_pembayaran' => $faker->randomElement($metodeBayar),
+                    'metode_pembayaran' => $metodeBayar[array_rand($metodeBayar)],
                     'jumlah_bayar'      => $total,
                     'status_pembayaran' => 'Lunas',
                     'tanggal_pembayaran'=> Carbon::parse($tglPesanan)->addHours(rand(1, 24))->format('Y-m-d'),
