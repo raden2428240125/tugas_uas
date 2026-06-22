@@ -20,17 +20,17 @@
         p { font-size: 14px; font-weight: 500; line-height: 20px; letter-spacing: 0.5px; margin: 10px 0 30px; color: #777; }
         .overlay-container p { color: rgba(255,255,255,0.9); font-weight: 400; margin-bottom: 35px; }
         input { background-color: #f3f3f4; border: none; padding: 14px 15px; margin: 8px 0; width: 100%; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 14px; outline: none; transition: 0.3s; }
-        input:focus { background-color: #fff; box-shadow: 0 0 0 2px var(--color-primary-40); }
-        button { border-radius: 20px; border: 1px solid var(--color-primary, #2563eb); background-color: var(--color-primary, #2563eb); color: #FFFFFF; font-size: 13px; font-weight: bold; padding: 12px 45px; letter-spacing: 1px; text-transform: uppercase; transition: transform 80ms ease-in; cursor: pointer; font-family: 'Montserrat', sans-serif; margin-top: 15px; width: 100%; max-width: 200px; }
+        input:focus { background-color: #fff; box-shadow: 0 0 0 2px var(--color-primary-40, rgba(37,99,235,0.4)); }
+        button { border-radius: 20px; border: 1px solid var(--color-primary, #2563eb); background-color: var(--color-primary, #2563eb); color: #FFFFFF; font-size: 13px; font-weight: bold; padding: 12px 45px; letter-spacing: 1px; text-transform: uppercase; transition: transform 80ms ease-in, background-color 0.3s; cursor: pointer; font-family: 'Montserrat', sans-serif; margin-top: 15px; width: 100%; max-width: 200px; }
         button:active { transform: scale(0.95); }
-        button:hover { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
+        button:hover { background-color: var(--color-primary-hover, #1d4ed8); border-color: var(--color-primary-hover, #1d4ed8); }
         button.ghost { background-color: transparent; border-color: #FFFFFF; }
         button.ghost:hover { background-color: rgba(255,255,255,0.1); }
         .checkbox-container { display: flex; justify-content: space-between; width: 100%; margin-top: 10px; align-items: center; }
         .checkbox-container label { font-size: 13px; color: #666; display: flex; align-items: center; cursor: pointer; font-weight: 500; }
         .checkbox-container input { width: auto; margin: 0 8px 0 0; }
         .forgot-password { font-size: 13px; color: #666; text-decoration: none; font-weight: 500; }
-        .forgot-password:hover { color: var(--color-primary); text-decoration: underline; }
+        .forgot-password:hover { color: var(--color-primary, #2563eb); text-decoration: underline; }
         .error-msg { color: #ef4444; font-size: 12px; margin-bottom: 10px; text-align: left; width: 100%; font-weight: 600; }
         form { width: 100%; display: flex; flex-direction: column; align-items: center; }
         
