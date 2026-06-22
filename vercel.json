@@ -23,6 +23,13 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
+        "APP_KEY": "base64:rLxgVBGNPf+1QA8r5CMh5Fx0Sbr8ywbSU3LL4lGjlqA=",
+        "DB_CONNECTION": "mysql",
+        "DB_HOST": "bacfs21hsxnf1tv5ri1x-mysql.services.clever-cloud.com",
+        "DB_PORT": "3306",
+        "DB_DATABASE": "bacfs21hsxnf1tv5ri1x",
+        "DB_USERNAME": "uknbnadmwawyedcp",
+        "DB_PASSWORD": "B0jhvrdJusM2xtdFmnEp",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
