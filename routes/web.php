@@ -75,3 +75,11 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('/run-migrations-secret', function () {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('migrate:fresh', ['--seed' => true, '--force' => true]);
+        return 'Migrasi berhasil dieksekusi! Output: ' . nl2br(\Illuminate\Support\Facades\Artisan::output());
+    } catch (\Throwable $e) {
+        return response('Error: ' . $e->getMessage() . ' File: ' . $e->getFile() . ' Line: ' . $e->getLine(), 200);
+    }
+});
