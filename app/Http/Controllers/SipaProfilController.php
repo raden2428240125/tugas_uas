@@ -48,6 +48,17 @@ class SipaProfilController extends Controller
             $preferences = json_decode(file_get_contents($prefsFile), true);
         }
 
+        // Load alamat kantor from JSON
+        $kantorFile = storage_path('app/alamat_kantor_user_' . $userId . '.json');
+        $alamatKantor = null;
+        if (file_exists($kantorFile)) {
+            $kantorData = json_decode(file_get_contents($kantorFile), true);
+            $alamatKantor = $kantorData['alamat_kantor'] ?? null;
+        }
+        if ($pelanggan) {
+            $pelanggan->alamat_kantor = $alamatKantor;
+        }
+
         return view('user.profil', compact('pelanggan', 'totalResepAktif', 'totalPesanan', 'preferences'));
     }
 
@@ -98,6 +109,19 @@ class SipaProfilController extends Controller
         }
 
         return redirect()->back()->with('success', 'Alamat berhasil diperbarui!');
+    }
+
+    public function updateAlamatKantor(Request $request)
+    {
+        $request->validate([
+            'alamat_kantor' => 'required|string',
+        ]);
+
+        $userId = auth()->id() ?? 1;
+        $kantorFile = storage_path('app/alamat_kantor_user_' . $userId . '.json');
+        file_put_contents($kantorFile, json_encode(['alamat_kantor' => $request->alamat_kantor]));
+
+        return redirect()->back()->with('success', 'Alamat kantor berhasil diperbarui!');
     }
 }
 

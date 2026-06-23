@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profil', [SipaProfilController::class, 'index'])->name('profil');
     Route::post('/profil/preferences', [SipaProfilController::class, 'updatePreferences'])->name('profil.preferences');
     Route::post('/profil/alamat', [SipaProfilController::class, 'updateAlamat'])->name('profil.alamat');
+    Route::post('/profil/alamat-kantor', [SipaProfilController::class, 'updateAlamatKantor'])->name('profil.alamat-kantor');
 });
 
 // Lokasi Apotek (static page)

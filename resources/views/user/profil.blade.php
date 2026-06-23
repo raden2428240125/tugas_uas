@@ -106,14 +106,16 @@
 </div>
 </div>
 </div>
-<div class="p-5 bg-surface-container-low border border-outline-variant rounded-xl group cursor-pointer hover:border-primary/40 transition-colors">
+<div class="p-5 bg-surface-container-low border border-outline-variant rounded-xl group cursor-pointer hover:border-primary/40 transition-colors" onclick="document.getElementById('modal-alamat-kantor').classList.remove('hidden')">
+<div class="absolute top-4 right-4 flex gap-2" style="position:relative; float:right; margin-top:-8px;">
+<button onclick="event.stopPropagation(); document.getElementById('modal-alamat-kantor').classList.remove('hidden')" class="text-primary hover:bg-primary/10 p-1.5 rounded-lg"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+</div>
 <div class="flex items-start gap-4">
 <span class="material-symbols-outlined text-on-surface-variant mt-1">apartment</span>
 <div>
 <span class="font-bold text-on-surface block mb-1">Kantor</span>
 <p class="text-[14px] text-on-surface-variant leading-relaxed">
-                                    Pacific Century Place, Lt. 25, SCBD Lot 10<br/>
-                                    Jakarta Selatan, DKI Jakarta 12190
+                                    {{ $pelanggan && $pelanggan->alamat_kantor ? $pelanggan->alamat_kantor : 'Belum ada alamat kantor — klik untuk menambahkan' }}
                                 </p>
 </div>
 </div>
@@ -218,6 +220,29 @@
             </div>
             <div class="flex justify-end gap-3">
                 <button type="button" onclick="document.getElementById('modal-alamat').classList.add('hidden')" class="px-6 py-2 rounded-full font-bold text-on-surface-variant hover:bg-surface-container transition-colors">Batal</button>
+                <button type="submit" class="px-6 py-2 rounded-full font-bold bg-primary text-on-primary hover:opacity-90 transition-opacity shadow-md">Simpan Alamat</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modal Ubah Alamat Kantor -->
+<div id="modal-alamat-kantor" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity">
+    <div class="bg-surface border border-outline-variant rounded-2xl w-full max-w-md p-6 shadow-2xl animate-fade-in-up">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="font-headline-sm font-bold text-on-surface">Ubah Alamat Kantor</h3>
+            <button onclick="document.getElementById('modal-alamat-kantor').classList.add('hidden')" class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container p-2 rounded-full transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <form action="{{ route('profil.alamat-kantor') }}" method="POST">
+            @csrf
+            <div class="mb-6">
+                <label for="alamat_kantor" class="block text-sm font-bold text-on-surface mb-2">Alamat Kantor</label>
+                <textarea id="alamat_kantor" name="alamat_kantor" rows="4" class="w-full px-4 py-3 bg-surface-container-lowest border border-outline-variant rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none text-on-surface" placeholder="Masukkan alamat kantor Anda..." required>{{ $pelanggan && $pelanggan->alamat_kantor ? $pelanggan->alamat_kantor : '' }}</textarea>
+            </div>
+            <div class="flex justify-end gap-3">
+                <button type="button" onclick="document.getElementById('modal-alamat-kantor').classList.add('hidden')" class="px-6 py-2 rounded-full font-bold text-on-surface-variant hover:bg-surface-container transition-colors">Batal</button>
                 <button type="submit" class="px-6 py-2 rounded-full font-bold bg-primary text-on-primary hover:opacity-90 transition-opacity shadow-md">Simpan Alamat</button>
             </div>
         </form>
